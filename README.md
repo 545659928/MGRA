@@ -1,3 +1,4 @@
 # MGRA
 the models for evaluating MGRA.
-ENV refers to the environment model, and requirements are classified into different granularity levels
+
+each application include a environment model, and requirements with four different granularity levels
