@@ -1,0 +1,11 @@
+Process:
+	R13_PUTONCE_For_B
+States:
+	2
+Transitions:
+	R13_PUTONCE_For_B = Q0,
+	Q0	= ({pickup.{sapce1, sapce4}, reset} -> Q0
+		  |putsuccess.sapce6 -> Q1),
+	Q1	= (pickup.{sapce1, sapce4} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce6 -> Q1).

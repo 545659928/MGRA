@@ -1,0 +1,16 @@
+Process:
+	R_B_aviod_nomean_action
+States:
+	3
+Transitions:
+	R_B_aviod_nomean_action = Q0,
+	Q0	= ({pickup.sapce1, pickupsuccess.sapce4, reset} -> Q0
+		  |putsuccess.sapce6 -> Q1
+		  |pickup.sapce4 -> Q2),
+	Q1	= (pickup.{sapce1, sapce4} -> ERROR
+		  |reset -> Q0
+		  |{pickupsuccess.sapce4, putsuccess.sapce6} -> Q1),
+	Q2	= ({pickup.sapce1, reset} -> ERROR
+		  |pickupsuccess.sapce4 -> Q0
+		  |putsuccess.sapce6 -> Q1
+		  |pickup.sapce4 -> Q2).

@@ -1,0 +1,11 @@
+Process:
+	R15_PressProduct
+States:
+	2
+Transitions:
+	R15_PressProduct = Q0,
+	Q0	= (press -> ERROR
+		  |[0].pickupSuccess.press -> Q0
+		  |[0].putSuccess.press -> Q1),
+	Q1	= ([0].pickupSuccess.press -> Q0
+		  |{[0].putSuccess.press, press} -> Q1).

@@ -1,0 +1,21 @@
+Process:
+	R11_12
+States:
+	4
+Transitions:
+	R11_12 = Q0,
+	Q0	= (bake -> ERROR
+		  |[0].{pickupSuccess.oven, reset} -> Q0
+		  |[0].endBaking -> Q1
+		  |[0].putSuccess.oven -> Q3),
+	Q1	= (bake -> ERROR
+		  |[0].reset -> Q0
+		  |[0].{endBaking, pickupSuccess.oven} -> Q1
+		  |[0].putSuccess.oven -> Q2),
+	Q2	= (bake -> ERROR
+		  |[0].pickupSuccess.oven -> Q1
+		  |[0].{endBaking, putSuccess.oven} -> Q2
+		  |[0].reset -> Q3),
+	Q3	= ([0].pickupSuccess.oven -> Q0
+		  |[0].endBaking -> Q2
+		  |{[0].{putSuccess.oven, reset}, bake} -> Q3).

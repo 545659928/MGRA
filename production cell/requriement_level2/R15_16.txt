@@ -1,0 +1,21 @@
+Process:
+	R15_16
+States:
+	4
+Transitions:
+	R15_16 = Q0,
+	Q0	= (press -> ERROR
+		  |[0].{pickupSuccess.press, reset} -> Q0
+		  |[0].endPress -> Q1
+		  |[0].putSuccess.press -> Q3),
+	Q1	= (press -> ERROR
+		  |[0].reset -> Q0
+		  |[0].{endPress, pickupSuccess.press} -> Q1
+		  |[0].putSuccess.press -> Q2),
+	Q2	= (press -> ERROR
+		  |[0].pickupSuccess.press -> Q1
+		  |[0].{endPress, putSuccess.press} -> Q2
+		  |[0].reset -> Q3),
+	Q3	= ([0].pickupSuccess.press -> Q0
+		  |[0].endPress -> Q2
+		  |{[0].{putSuccess.press, reset}, press} -> Q3).

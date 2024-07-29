@@ -1,0 +1,34 @@
+Process:
+	R_B_2
+States:
+	6
+Transitions:
+	R_B_2 = Q0,
+	Q0	= (putdown.sapce4 -> ERROR
+		  |{pickup.sapce1, pickupsuccess.sapce4, reset, task.a} -> Q0
+		  |ended -> Q1
+		  |putsuccess.sapce6 -> Q4
+		  |pickup.sapce4 -> Q5),
+	Q1	= ({ended, putdown.sapce4} -> ERROR
+		  |task.a -> Q0
+		  |{pickup.sapce1, pickupsuccess.sapce4, reset} -> Q1
+		  |putsuccess.sapce6 -> Q2
+		  |pickup.sapce4 -> Q3),
+	Q2	= ({ended, pickup.{sapce1, sapce4}, putdown.sapce4} -> ERROR
+		  |reset -> Q1
+		  |{pickupsuccess.sapce4, putsuccess.sapce6} -> Q2
+		  |task.a -> Q4),
+	Q3	= ({ended, pickup.sapce1, putdown.sapce4, reset} -> ERROR
+		  |pickupsuccess.sapce4 -> Q1
+		  |putsuccess.sapce6 -> Q2
+		  |pickup.sapce4 -> Q3
+		  |task.a -> Q5),
+	Q4	= ({pickup.{sapce1, sapce4}, putdown.sapce4} -> ERROR
+		  |reset -> Q0
+		  |ended -> Q2
+		  |{pickupsuccess.sapce4, putsuccess.sapce6, task.a} -> Q4),
+	Q5	= ({pickup.sapce1, putdown.sapce4, reset} -> ERROR
+		  |pickupsuccess.sapce4 -> Q0
+		  |ended -> Q3
+		  |putsuccess.sapce6 -> Q4
+		  |{pickup.sapce4, task.a} -> Q5).

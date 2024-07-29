@@ -1,0 +1,11 @@
+Process:
+	R_B_timeless
+States:
+	2
+Transitions:
+	R_B_timeless = Q0,
+	Q0	= (putdown.sapce4 -> ERROR
+		  |task.a -> Q0
+		  |ended -> Q1),
+	Q1	= ({ended, putdown.sapce4} -> ERROR
+		  |task.a -> Q0).

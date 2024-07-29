@@ -1,0 +1,31 @@
+Process:
+	COUNT1
+States:
+	17
+Transitions:
+	COUNT1 = Q0,
+	Q0	= (task.{a, b} -> Q1),
+	Q1	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q2
+		  |ended -> Q16),
+	Q2	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q3
+		  |ended -> Q15),
+	Q3	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q4
+		  |ended -> Q14),
+	Q4	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q5
+		  |ended -> Q13),
+	Q5	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q6
+		  |ended -> Q12),
+	Q6	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q7
+		  |ended -> Q11),
+	Q7	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q8
+		  |ended -> Q10),
+	Q8	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |ended -> Q9),
+	Q9	= (reset -> Q0),
+	Q10	= (reset -> Q0),
+	Q11	= (reset -> Q0),
+	Q12	= (reset -> Q0),
+	Q13	= (reset -> Q0),
+	Q14	= (reset -> Q0),
+	Q15	= (reset -> Q0),
+	Q16	= (reset -> Q0).

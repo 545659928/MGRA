@@ -1,0 +1,84 @@
+Process:
+	R3_4_5_6
+States:
+	16
+Transitions:
+	R3_4_5_6 = Q0,
+	Q0	= ({moveTo.{drill, oven, press, tray}, {pickup, putdown}} -> Q0
+		  |arrive.press -> Q1
+		  |arrive.drill -> Q9
+		  |arrive.tray -> Q13
+		  |arrive.oven -> Q15),
+	Q1	= (moveTo.{drill, oven, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |{arrive, moveTo}.press -> Q1
+		  |arrive.drill -> Q2
+		  |arrive.tray -> Q6
+		  |arrive.oven -> Q8),
+	Q2	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.{drill, press} -> Q2
+		  |arrive.tray -> Q3
+		  |arrive.oven -> Q5),
+	Q3	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.{drill, press, tray} -> Q3
+		  |arrive.oven -> Q4),
+	Q4	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.{drill, oven, press, tray} -> Q4),
+	Q5	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.tray -> Q4
+		  |arrive.{drill, oven, press} -> Q5),
+	Q6	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.drill -> Q3
+		  |arrive.{press, tray} -> Q6
+		  |arrive.oven -> Q7),
+	Q7	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.drill -> Q4
+		  |arrive.{oven, press, tray} -> Q7),
+	Q8	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.drill -> Q5
+		  |arrive.tray -> Q7
+		  |arrive.{oven, press} -> Q8),
+	Q9	= (moveTo.{oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q2
+		  |{arrive, moveTo}.drill -> Q9
+		  |arrive.tray -> Q10
+		  |arrive.oven -> Q12),
+	Q10	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q3
+		  |arrive.{drill, tray} -> Q10
+		  |arrive.oven -> Q11),
+	Q11	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q4
+		  |arrive.{drill, oven, tray} -> Q11),
+	Q12	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q5
+		  |arrive.tray -> Q11
+		  |arrive.{drill, oven} -> Q12),
+	Q13	= (moveTo.{drill, oven, press} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q6
+		  |arrive.drill -> Q10
+		  |{arrive, moveTo}.tray -> Q13
+		  |arrive.oven -> Q14),
+	Q14	= (moveTo.{drill, oven, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q7
+		  |arrive.drill -> Q11
+		  |arrive.{oven, tray} -> Q14),
+	Q15	= (moveTo.{drill, press, tray} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.press -> Q8
+		  |arrive.drill -> Q12
+		  |arrive.tray -> Q14
+		  |{arrive, moveTo}.oven -> Q15).

@@ -1,0 +1,53 @@
+Process:
+	R_A_timeless
+States:
+	29
+Transitions:
+	R_A_timeless = Q0,
+	Q0	= (task.{a, b} -> Q1),
+	Q1	= (ended -> Q2
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q13),
+	Q2	= (reset -> Q3),
+	Q3	= (task.a -> Q1
+		  |task.b -> Q4),
+	Q4	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q5),
+	Q5	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q6),
+	Q6	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q7),
+	Q7	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q8),
+	Q8	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q9),
+	Q9	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q10),
+	Q10	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q11),
+	Q11	= (ended -> ERROR
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q12),
+	Q12	= ({ended, move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR),
+	Q13	= (ended -> Q14
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q15),
+	Q14	= (reset -> Q3),
+	Q15	= (ended -> Q16
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q17),
+	Q16	= (reset -> Q3),
+	Q17	= (ended -> Q18
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q19),
+	Q18	= (reset -> Q3),
+	Q19	= (ended -> Q20
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q21),
+	Q20	= (reset -> Q3),
+	Q21	= (ended -> Q22
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q23),
+	Q22	= (reset -> Q3),
+	Q23	= (ended -> Q24
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q25),
+	Q24	= (reset -> Q3),
+	Q25	= (ended -> Q26
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q27),
+	Q26	= (reset -> Q3),
+	Q27	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |ended -> Q28),
+	Q28	= (reset -> Q3).

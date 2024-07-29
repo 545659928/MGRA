@@ -1,0 +1,11 @@
+Process:
+	R10_PickupRule
+States:
+	2
+Transitions:
+	R10_PickupRule = Q0,
+	Q0	= ({[0].reset, {bake, drill}, moveTo.{drill, oven, press, tray}, {press, putdown}} -> Q0
+		  |pickup -> Q1),
+	Q1	= (putdown -> ERROR
+		  |{[0].reset, {bake, drill}, moveTo.{drill, oven, press, tray}, press} -> Q0
+		  |pickup -> Q1).

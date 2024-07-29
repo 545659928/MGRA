@@ -1,0 +1,21 @@
+Process:
+	R13_14
+States:
+	4
+Transitions:
+	R13_14 = Q0,
+	Q0	= (drill -> ERROR
+		  |[0].{pickupSuccess.drill, reset} -> Q0
+		  |[0].endDrill -> Q1
+		  |[0].putSuccess.drill -> Q3),
+	Q1	= (drill -> ERROR
+		  |[0].reset -> Q0
+		  |[0].{endDrill, pickupSuccess.drill} -> Q1
+		  |[0].putSuccess.drill -> Q2),
+	Q2	= (drill -> ERROR
+		  |[0].pickupSuccess.drill -> Q1
+		  |[0].{endDrill, putSuccess.drill} -> Q2
+		  |[0].reset -> Q3),
+	Q3	= ([0].pickupSuccess.drill -> Q0
+		  |[0].endDrill -> Q2
+		  |{[0].{putSuccess.drill, reset}, drill} -> Q3).

@@ -1,0 +1,12 @@
+Process:
+	R1_2
+States:
+	2
+Transitions:
+	R1_2 = Q0,
+	Q0	= (putdown -> ERROR
+		  |{[0].putSuccess.{drill, oven, press, tray}, pickup} -> Q0
+		  |[0].pickupSuccess.{drill, oven, press, tray} -> Q1),
+	Q1	= (pickup -> ERROR
+		  |[0].putSuccess.{drill, oven, press, tray} -> Q0
+		  |{[0].pickupSuccess.{drill, oven, press, tray}, putdown} -> Q1).

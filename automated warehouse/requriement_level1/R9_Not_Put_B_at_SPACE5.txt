@@ -1,0 +1,7 @@
+Process:
+	R9_Not_Put_B_at_SPACE5
+States:
+	1
+Transitions:
+	R9_Not_Put_B_at_SPACE5 = Q0,
+	Q0	= (putdown.sapce5 -> ERROR).

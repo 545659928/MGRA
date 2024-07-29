@@ -1,0 +1,477 @@
+Process:
+	R11_16
+States:
+	64
+Transitions:
+	R11_16 = Q0,
+	Q0	= ({bake, drill, press} -> ERROR
+		  |[0].{pickupSuccess.{drill, oven, press}, reset} -> Q0
+		  |[0].endPress -> Q1
+		  |[0].putSuccess.press -> Q59
+		  |[0].endDrill -> Q60
+		  |[0].putSuccess.drill -> Q61
+		  |[0].endBaking -> Q62
+		  |[0].putSuccess.oven -> Q63),
+	Q1	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].{endPress, pickupSuccess.{drill, oven, press}} -> Q1
+		  |[0].putSuccess.press -> Q2
+		  |[0].endDrill -> Q55
+		  |[0].putSuccess.drill -> Q56
+		  |[0].endBaking -> Q57
+		  |[0].putSuccess.oven -> Q58),
+	Q2	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.press -> Q1
+		  |[0].{endPress, pickupSuccess.{drill, oven}, putSuccess.press} -> Q2
+		  |[0].endDrill -> Q3
+		  |[0].putSuccess.drill -> Q52
+		  |[0].endBaking -> Q53
+		  |[0].putSuccess.oven -> Q54
+		  |[0].reset -> Q59),
+	Q3	= ({bake, drill, press} -> ERROR
+		  |[0].{{endDrill, endPress}, pickupSuccess.{drill, oven}, putSuccess.press} -> Q3
+		  |[0].putSuccess.drill -> Q4
+		  |[0].endBaking -> Q50
+		  |[0].putSuccess.oven -> Q51
+		  |[0].pickupSuccess.press -> Q55
+		  |[0].reset -> Q59),
+	Q4	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.drill -> Q3
+		  |[0].{{endDrill, endPress}, pickupSuccess.oven, putSuccess.{drill, press}} -> Q4
+		  |[0].pickupSuccess.press -> Q5
+		  |[0].endBaking -> Q47
+		  |[0].reset -> Q48
+		  |[0].putSuccess.oven -> Q49),
+	Q5	= ({bake, drill, press} -> ERROR
+		  |[0].putSuccess.press -> Q4
+		  |[0].{{endDrill, endPress}, pickupSuccess.{oven, press}, putSuccess.drill} -> Q5
+		  |[0].endBaking -> Q6
+		  |[0].putSuccess.oven -> Q46
+		  |[0].pickupSuccess.drill -> Q55
+		  |[0].reset -> Q61),
+	Q6	= ({bake, drill, press} -> ERROR
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.{oven, press}, putSuccess.drill} -> Q6
+		  |[0].pickupSuccess.drill -> Q7
+		  |[0].putSuccess.oven -> Q45
+		  |[0].putSuccess.press -> Q47
+		  |[0].reset -> Q61),
+	Q7	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].putSuccess.drill -> Q6
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.{drill, oven, press}} -> Q7
+		  |[0].putSuccess.oven -> Q8
+		  |[0].putSuccess.press -> Q50),
+	Q8	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q7
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.{drill, press}, putSuccess.oven} -> Q8
+		  |[0].putSuccess.press -> Q9
+		  |[0].putSuccess.drill -> Q45
+		  |[0].reset -> Q63),
+	Q9	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.press -> Q8
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.drill, putSuccess.{oven, press}} -> Q9
+		  |[0].putSuccess.drill -> Q10
+		  |[0].reset -> Q44
+		  |[0].pickupSuccess.oven -> Q50),
+	Q10	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.drill -> Q9
+		  |[0].{{endBaking, endDrill, endPress}, putSuccess.{drill, oven, press}} -> Q10
+		  |[0].reset -> Q11
+		  |[0].pickupSuccess.press -> Q45
+		  |[0].pickupSuccess.oven -> Q47),
+	Q11	= ({[0].{putSuccess.{drill, oven, press}, reset}, {bake, drill, press}} -> Q11
+		  |[0].endPress -> Q12
+		  |[0].pickupSuccess.press -> Q20
+		  |[0].endDrill -> Q42
+		  |[0].endBaking -> Q43
+		  |[0].pickupSuccess.drill -> Q44
+		  |[0].pickupSuccess.oven -> Q48),
+	Q12	= (press -> ERROR
+		  |[0].reset -> Q11
+		  |{[0].{endPress, putSuccess.{drill, oven, press}}, {bake, drill}} -> Q12
+		  |[0].pickupSuccess.press -> Q13
+		  |[0].endBaking -> Q19
+		  |[0].endDrill -> Q49
+		  |[0].pickupSuccess.oven -> Q52
+		  |[0].pickupSuccess.drill -> Q54),
+	Q13	= (press -> ERROR
+		  |[0].putSuccess.press -> Q12
+		  |{[0].{endPress, pickupSuccess.press, putSuccess.{drill, oven}}, {bake, drill}} -> Q13
+		  |[0].endBaking -> Q14
+		  |[0].reset -> Q20
+		  |[0].endDrill -> Q46
+		  |[0].pickupSuccess.oven -> Q56
+		  |[0].pickupSuccess.drill -> Q58),
+	Q14	= ({bake, press} -> ERROR
+		  |{[0].{{endBaking, endPress}, pickupSuccess.press, putSuccess.{drill, oven}}, drill} -> Q14
+		  |[0].pickupSuccess.drill -> Q15
+		  |[0].pickupSuccess.oven -> Q17
+		  |[0].putSuccess.press -> Q19
+		  |[0].reset -> Q20
+		  |[0].endDrill -> Q45),
+	Q15	= ({bake, drill, press} -> ERROR
+		  |[0].endDrill -> Q8
+		  |[0].putSuccess.drill -> Q14
+		  |[0].{{endBaking, endPress}, pickupSuccess.{drill, press}, putSuccess.oven} -> Q15
+		  |[0].putSuccess.press -> Q16
+		  |[0].pickupSuccess.oven -> Q57
+		  |[0].reset -> Q63),
+	Q16	= ({bake, drill, press} -> ERROR
+		  |[0].endDrill -> Q9
+		  |[0].pickupSuccess.press -> Q15
+		  |[0].{{endBaking, endPress}, pickupSuccess.drill, putSuccess.{oven, press}} -> Q16
+		  |[0].putSuccess.drill -> Q19
+		  |[0].reset -> Q44
+		  |[0].pickupSuccess.oven -> Q53),
+	Q17	= ({bake, press} -> ERROR
+		  |[0].endDrill -> Q6
+		  |[0].putSuccess.oven -> Q14
+		  |{[0].{{endBaking, endPress}, pickupSuccess.{oven, press}, putSuccess.drill}, drill} -> Q17
+		  |[0].putSuccess.press -> Q18
+		  |[0].pickupSuccess.drill -> Q57
+		  |[0].reset -> Q61),
+	Q18	= ({bake, press} -> ERROR
+		  |[0].pickupSuccess.press -> Q17
+		  |{[0].{{endBaking, endPress}, pickupSuccess.oven, putSuccess.{drill, press}}, drill} -> Q18
+		  |[0].putSuccess.oven -> Q19
+		  |[0].endDrill -> Q47
+		  |[0].reset -> Q48
+		  |[0].pickupSuccess.drill -> Q53),
+	Q19	= ({bake, press} -> ERROR
+		  |[0].endDrill -> Q10
+		  |[0].reset -> Q11
+		  |[0].pickupSuccess.press -> Q14
+		  |[0].pickupSuccess.drill -> Q16
+		  |[0].pickupSuccess.oven -> Q18
+		  |{[0].{{endBaking, endPress}, putSuccess.{drill, oven, press}}, drill} -> Q19),
+	Q20	= (press -> ERROR
+		  |[0].putSuccess.press -> Q11
+		  |[0].endPress -> Q13
+		  |{[0].{pickupSuccess.press, putSuccess.{drill, oven}, reset}, {bake, drill}} -> Q20
+		  |[0].endDrill -> Q21
+		  |[0].endBaking -> Q36
+		  |[0].pickupSuccess.oven -> Q61
+		  |[0].pickupSuccess.drill -> Q63),
+	Q21	= ({drill, press} -> ERROR
+		  |[0].reset -> Q20
+		  |{[0].{endDrill, pickupSuccess.press, putSuccess.{drill, oven}}, bake} -> Q21
+		  |[0].pickupSuccess.drill -> Q22
+		  |[0].endBaking -> Q34
+		  |[0].pickupSuccess.oven -> Q35
+		  |[0].putSuccess.press -> Q42
+		  |[0].endPress -> Q46),
+	Q22	= ({drill, press} -> ERROR
+		  |[0].putSuccess.drill -> Q21
+		  |{[0].{endDrill, pickupSuccess.{drill, press}, putSuccess.oven}, bake} -> Q22
+		  |[0].endPress -> Q23
+		  |[0].putSuccess.press -> Q24
+		  |[0].endBaking -> Q33
+		  |[0].pickupSuccess.oven -> Q60
+		  |[0].reset -> Q63),
+	Q23	= ({drill, press} -> ERROR
+		  |[0].endBaking -> Q8
+		  |{[0].{{endDrill, endPress}, pickupSuccess.{drill, press}, putSuccess.oven}, bake} -> Q23
+		  |[0].putSuccess.drill -> Q46
+		  |[0].putSuccess.press -> Q51
+		  |[0].pickupSuccess.oven -> Q55
+		  |[0].reset -> Q63),
+	Q24	= (drill -> ERROR
+		  |[0].pickupSuccess.press -> Q22
+		  |{[0].{endDrill, pickupSuccess.drill, putSuccess.{oven, press}}, {bake, press}} -> Q24
+		  |[0].endBaking -> Q25
+		  |[0].pickupSuccess.oven -> Q31
+		  |[0].putSuccess.drill -> Q42
+		  |[0].reset -> Q44
+		  |[0].endPress -> Q51),
+	Q25	= ({bake, drill} -> ERROR
+		  |[0].endPress -> Q9
+		  |{[0].{{endBaking, endDrill}, pickupSuccess.drill, putSuccess.{oven, press}}, press} -> Q25
+		  |[0].putSuccess.drill -> Q26
+		  |[0].pickupSuccess.oven -> Q30
+		  |[0].pickupSuccess.press -> Q33
+		  |[0].reset -> Q44),
+	Q26	= ({bake, drill} -> ERROR
+		  |[0].endPress -> Q10
+		  |[0].reset -> Q11
+		  |[0].pickupSuccess.drill -> Q25
+		  |{[0].{{endBaking, endDrill}, putSuccess.{drill, oven, press}}, press} -> Q26
+		  |[0].pickupSuccess.oven -> Q27
+		  |[0].pickupSuccess.press -> Q34),
+	Q27	= ({bake, drill} -> ERROR
+		  |[0].putSuccess.oven -> Q26
+		  |{[0].{{endBaking, endDrill}, pickupSuccess.oven, putSuccess.{drill, press}}, press} -> Q27
+		  |[0].pickupSuccess.press -> Q28
+		  |[0].pickupSuccess.drill -> Q30
+		  |[0].endPress -> Q47
+		  |[0].reset -> Q48),
+	Q28	= ({bake, drill, press} -> ERROR
+		  |[0].endPress -> Q6
+		  |[0].putSuccess.press -> Q27
+		  |[0].{{endBaking, endDrill}, pickupSuccess.{oven, press}, putSuccess.drill} -> Q28
+		  |[0].pickupSuccess.drill -> Q29
+		  |[0].putSuccess.oven -> Q34
+		  |[0].reset -> Q61),
+	Q29	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].endPress -> Q7
+		  |[0].putSuccess.drill -> Q28
+		  |[0].{{endBaking, endDrill}, pickupSuccess.{drill, oven, press}} -> Q29
+		  |[0].putSuccess.press -> Q30
+		  |[0].putSuccess.oven -> Q33),
+	Q30	= ({bake, drill} -> ERROR
+		  |[0].putSuccess.oven -> Q25
+		  |[0].putSuccess.drill -> Q27
+		  |[0].pickupSuccess.press -> Q29
+		  |{[0].{{endBaking, endDrill}, pickupSuccess.{drill, oven}, putSuccess.press}, press} -> Q30
+		  |[0].endPress -> Q50
+		  |[0].reset -> Q59),
+	Q31	= ({bake, drill} -> ERROR
+		  |[0].endPress -> Q3
+		  |[0].putSuccess.oven -> Q24
+		  |[0].endBaking -> Q30
+		  |{[0].{endDrill, pickupSuccess.{drill, oven}, putSuccess.press}, press} -> Q31
+		  |[0].putSuccess.drill -> Q32
+		  |[0].reset -> Q59
+		  |[0].pickupSuccess.press -> Q60),
+	Q32	= ({bake, drill} -> ERROR
+		  |[0].endPress -> Q4
+		  |[0].endBaking -> Q27
+		  |[0].pickupSuccess.drill -> Q31
+		  |{[0].{endDrill, pickupSuccess.oven, putSuccess.{drill, press}}, press} -> Q32
+		  |[0].pickupSuccess.press -> Q35
+		  |[0].putSuccess.oven -> Q42
+		  |[0].reset -> Q48),
+	Q33	= ({bake, drill, press} -> ERROR
+		  |[0].endPress -> Q8
+		  |[0].putSuccess.press -> Q25
+		  |[0].pickupSuccess.oven -> Q29
+		  |[0].{{endBaking, endDrill}, pickupSuccess.{drill, press}, putSuccess.oven} -> Q33
+		  |[0].putSuccess.drill -> Q34
+		  |[0].reset -> Q63),
+	Q34	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q20
+		  |[0].putSuccess.press -> Q26
+		  |[0].pickupSuccess.oven -> Q28
+		  |[0].pickupSuccess.drill -> Q33
+		  |[0].{{endBaking, endDrill}, pickupSuccess.press, putSuccess.{drill, oven}} -> Q34
+		  |[0].endPress -> Q45),
+	Q35	= ({bake, drill, press} -> ERROR
+		  |[0].endPress -> Q5
+		  |[0].putSuccess.oven -> Q21
+		  |[0].endBaking -> Q28
+		  |[0].putSuccess.press -> Q32
+		  |[0].{endDrill, pickupSuccess.{oven, press}, putSuccess.drill} -> Q35
+		  |[0].pickupSuccess.drill -> Q60
+		  |[0].reset -> Q61),
+	Q36	= ({bake, press} -> ERROR
+		  |[0].endPress -> Q14
+		  |[0].reset -> Q20
+		  |[0].endDrill -> Q34
+		  |{[0].{endBaking, pickupSuccess.press, putSuccess.{drill, oven}}, drill} -> Q36
+		  |[0].pickupSuccess.drill -> Q37
+		  |[0].pickupSuccess.oven -> Q41
+		  |[0].putSuccess.press -> Q43),
+	Q37	= ({bake, drill, press} -> ERROR
+		  |[0].endPress -> Q15
+		  |[0].endDrill -> Q33
+		  |[0].putSuccess.drill -> Q36
+		  |[0].{endBaking, pickupSuccess.{drill, press}, putSuccess.oven} -> Q37
+		  |[0].putSuccess.press -> Q38
+		  |[0].pickupSuccess.oven -> Q62
+		  |[0].reset -> Q63),
+	Q38	= ({bake, drill} -> ERROR
+		  |[0].endPress -> Q16
+		  |[0].endDrill -> Q25
+		  |[0].pickupSuccess.press -> Q37
+		  |{[0].{endBaking, pickupSuccess.drill, putSuccess.{oven, press}}, press} -> Q38
+		  |[0].pickupSuccess.oven -> Q39
+		  |[0].putSuccess.drill -> Q43
+		  |[0].reset -> Q44),
+	Q39	= ({bake, drill} -> ERROR
+		  |[0].endDrill -> Q30
+		  |[0].putSuccess.oven -> Q38
+		  |{[0].{endBaking, pickupSuccess.{drill, oven}, putSuccess.press}, press} -> Q39
+		  |[0].putSuccess.drill -> Q40
+		  |[0].endPress -> Q53
+		  |[0].reset -> Q59
+		  |[0].pickupSuccess.press -> Q62),
+	Q40	= (bake -> ERROR
+		  |[0].endPress -> Q18
+		  |[0].endDrill -> Q27
+		  |[0].pickupSuccess.drill -> Q39
+		  |{[0].{endBaking, pickupSuccess.oven, putSuccess.{drill, press}}, {drill, press}} -> Q40
+		  |[0].pickupSuccess.press -> Q41
+		  |[0].putSuccess.oven -> Q43
+		  |[0].reset -> Q48),
+	Q41	= ({bake, press} -> ERROR
+		  |[0].endPress -> Q17
+		  |[0].endDrill -> Q28
+		  |[0].putSuccess.oven -> Q36
+		  |[0].putSuccess.press -> Q40
+		  |{[0].{endBaking, pickupSuccess.{oven, press}, putSuccess.drill}, drill} -> Q41
+		  |[0].reset -> Q61
+		  |[0].pickupSuccess.drill -> Q62),
+	Q42	= (drill -> ERROR
+		  |[0].reset -> Q11
+		  |[0].pickupSuccess.press -> Q21
+		  |[0].pickupSuccess.drill -> Q24
+		  |[0].endBaking -> Q26
+		  |[0].pickupSuccess.oven -> Q32
+		  |{[0].{endDrill, putSuccess.{drill, oven, press}}, {bake, press}} -> Q42
+		  |[0].endPress -> Q49),
+	Q43	= (bake -> ERROR
+		  |[0].reset -> Q11
+		  |[0].endPress -> Q19
+		  |[0].endDrill -> Q26
+		  |[0].pickupSuccess.press -> Q36
+		  |[0].pickupSuccess.drill -> Q38
+		  |[0].pickupSuccess.oven -> Q40
+		  |{[0].{endBaking, putSuccess.{drill, oven, press}}, {drill, press}} -> Q43),
+	Q44	= (drill -> ERROR
+		  |[0].putSuccess.drill -> Q11
+		  |[0].endDrill -> Q24
+		  |[0].endBaking -> Q38
+		  |{[0].{pickupSuccess.drill, putSuccess.{oven, press}, reset}, {bake, press}} -> Q44
+		  |[0].endPress -> Q54
+		  |[0].pickupSuccess.oven -> Q59
+		  |[0].pickupSuccess.press -> Q63),
+	Q45	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q6
+		  |[0].pickupSuccess.drill -> Q8
+		  |[0].putSuccess.press -> Q10
+		  |[0].reset -> Q20
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.press, putSuccess.{drill, oven}} -> Q45),
+	Q46	= ({drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q5
+		  |[0].reset -> Q20
+		  |[0].pickupSuccess.drill -> Q23
+		  |[0].endBaking -> Q45
+		  |{[0].{{endDrill, endPress}, pickupSuccess.press, putSuccess.{drill, oven}}, bake} -> Q46
+		  |[0].putSuccess.press -> Q49),
+	Q47	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.press -> Q6
+		  |[0].putSuccess.oven -> Q10
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.oven, putSuccess.{drill, press}} -> Q47
+		  |[0].reset -> Q48
+		  |[0].pickupSuccess.drill -> Q50),
+	Q48	= (bake -> ERROR
+		  |[0].putSuccess.oven -> Q11
+		  |[0].endDrill -> Q32
+		  |[0].endBaking -> Q40
+		  |{[0].{pickupSuccess.oven, putSuccess.{drill, press}, reset}, {drill, press}} -> Q48
+		  |[0].endPress -> Q52
+		  |[0].pickupSuccess.drill -> Q59
+		  |[0].pickupSuccess.press -> Q61),
+	Q49	= ({drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q4
+		  |[0].endBaking -> Q10
+		  |[0].reset -> Q11
+		  |[0].pickupSuccess.press -> Q46
+		  |{[0].{{endDrill, endPress}, putSuccess.{drill, oven, press}}, bake} -> Q49
+		  |[0].pickupSuccess.drill -> Q51),
+	Q50	= ({bake, drill, press} -> ERROR
+		  |[0].pickupSuccess.press -> Q7
+		  |[0].putSuccess.oven -> Q9
+		  |[0].putSuccess.drill -> Q47
+		  |[0].{{endBaking, endDrill, endPress}, pickupSuccess.{drill, oven}, putSuccess.press} -> Q50
+		  |[0].reset -> Q59),
+	Q51	= ({drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q3
+		  |[0].endBaking -> Q9
+		  |[0].pickupSuccess.press -> Q23
+		  |[0].reset -> Q44
+		  |[0].putSuccess.drill -> Q49
+		  |{[0].{{endDrill, endPress}, pickupSuccess.drill, putSuccess.{oven, press}}, bake} -> Q51),
+	Q52	= ({bake, press} -> ERROR
+		  |[0].pickupSuccess.drill -> Q2
+		  |[0].endDrill -> Q4
+		  |[0].putSuccess.oven -> Q12
+		  |[0].endBaking -> Q18
+		  |[0].reset -> Q48
+		  |{[0].{endPress, pickupSuccess.oven, putSuccess.{drill, press}}, drill} -> Q52
+		  |[0].pickupSuccess.press -> Q56),
+	Q53	= ({bake, drill, press} -> ERROR
+		  |[0].putSuccess.oven -> Q16
+		  |[0].putSuccess.drill -> Q18
+		  |[0].endDrill -> Q50
+		  |[0].{{endBaking, endPress}, pickupSuccess.{drill, oven}, putSuccess.press} -> Q53
+		  |[0].pickupSuccess.press -> Q57
+		  |[0].reset -> Q59),
+	Q54	= ({drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q2
+		  |[0].putSuccess.drill -> Q12
+		  |[0].endBaking -> Q16
+		  |[0].reset -> Q44
+		  |[0].endDrill -> Q51
+		  |{[0].{endPress, pickupSuccess.drill, putSuccess.{oven, press}}, bake} -> Q54
+		  |[0].pickupSuccess.press -> Q58),
+	Q55	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].putSuccess.press -> Q3
+		  |[0].putSuccess.drill -> Q5
+		  |[0].endBaking -> Q7
+		  |[0].putSuccess.oven -> Q23
+		  |[0].{{endDrill, endPress}, pickupSuccess.{drill, oven, press}} -> Q55),
+	Q56	= ({bake, press} -> ERROR
+		  |[0].pickupSuccess.drill -> Q1
+		  |[0].endDrill -> Q5
+		  |[0].putSuccess.oven -> Q13
+		  |[0].endBaking -> Q17
+		  |[0].putSuccess.press -> Q52
+		  |{[0].{endPress, pickupSuccess.{oven, press}, putSuccess.drill}, drill} -> Q56
+		  |[0].reset -> Q61),
+	Q57	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].endDrill -> Q7
+		  |[0].putSuccess.oven -> Q15
+		  |[0].putSuccess.drill -> Q17
+		  |[0].putSuccess.press -> Q53
+		  |[0].{{endBaking, endPress}, pickupSuccess.{drill, oven, press}} -> Q57),
+	Q58	= ({drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q1
+		  |[0].putSuccess.drill -> Q13
+		  |[0].endBaking -> Q15
+		  |[0].endDrill -> Q23
+		  |[0].putSuccess.press -> Q54
+		  |{[0].{endPress, pickupSuccess.{drill, press}, putSuccess.oven}, bake} -> Q58
+		  |[0].reset -> Q63),
+	Q59	= ({bake, drill} -> ERROR
+		  |[0].pickupSuccess.press -> Q0
+		  |[0].endPress -> Q2
+		  |[0].endDrill -> Q31
+		  |[0].endBaking -> Q39
+		  |[0].putSuccess.oven -> Q44
+		  |[0].putSuccess.drill -> Q48
+		  |{[0].{pickupSuccess.{drill, oven}, putSuccess.press, reset}, press} -> Q59),
+	Q60	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].putSuccess.oven -> Q22
+		  |[0].endBaking -> Q29
+		  |[0].putSuccess.press -> Q31
+		  |[0].putSuccess.drill -> Q35
+		  |[0].endPress -> Q55
+		  |[0].{endDrill, pickupSuccess.{drill, oven, press}} -> Q60),
+	Q61	= ({bake, press} -> ERROR
+		  |[0].pickupSuccess.drill -> Q0
+		  |[0].putSuccess.oven -> Q20
+		  |[0].endDrill -> Q35
+		  |[0].endBaking -> Q41
+		  |[0].putSuccess.press -> Q48
+		  |[0].endPress -> Q56
+		  |{[0].{pickupSuccess.{oven, press}, putSuccess.drill, reset}, drill} -> Q61),
+	Q62	= ({bake, drill, press} -> ERROR
+		  |[0].reset -> Q0
+		  |[0].endDrill -> Q29
+		  |[0].putSuccess.oven -> Q37
+		  |[0].putSuccess.press -> Q39
+		  |[0].putSuccess.drill -> Q41
+		  |[0].endPress -> Q57
+		  |[0].{endBaking, pickupSuccess.{drill, oven, press}} -> Q62),
+	Q63	= ({drill, press} -> ERROR
+		  |[0].pickupSuccess.oven -> Q0
+		  |[0].putSuccess.drill -> Q20
+		  |[0].endDrill -> Q22
+		  |[0].endBaking -> Q37
+		  |[0].putSuccess.press -> Q44
+		  |[0].endPress -> Q58
+		  |{[0].{pickupSuccess.{drill, press}, putSuccess.oven, reset}, bake} -> Q63).

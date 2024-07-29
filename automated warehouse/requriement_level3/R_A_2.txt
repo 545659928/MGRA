@@ -1,0 +1,450 @@
+Process:
+	R_A_2
+States:
+	116
+Transitions:
+	R_A_2 = Q0,
+	Q0	= (task.{a, b} -> Q1
+		  |putsuccess.sapce3 -> Q113
+		  |pickupsuccess.sapce1 -> Q115),
+	Q1	= (ended -> Q2
+		  |putsuccess.sapce3 -> Q79
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q80
+		  |pickupsuccess.sapce1 -> Q112),
+	Q2	= (putsuccess.sapce3 -> Q3
+		  |reset -> Q5
+		  |pickupsuccess.sapce1 -> Q78),
+	Q3	= (putsuccess.sapce3 -> Q3
+		  |pickupsuccess.sapce1 -> Q4
+		  |reset -> Q5),
+	Q4	= (putsuccess.sapce3 -> Q3
+		  |pickupsuccess.sapce1 -> Q4
+		  |reset -> Q5),
+	Q5	= (task.a -> Q1
+		  |task.b -> Q6
+		  |putsuccess.sapce3 -> Q42
+		  |pickupsuccess.sapce1 -> Q77),
+	Q6	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q7
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q25
+		  |pickupsuccess.sapce1 -> Q41),
+	Q7	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q7
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q8
+		  |pickupsuccess.sapce1 -> Q24),
+	Q8	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q8
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q9
+		  |pickupsuccess.sapce1 -> Q23),
+	Q9	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q9
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q10
+		  |pickupsuccess.sapce1 -> Q22),
+	Q10	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q10
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q11
+		  |pickupsuccess.sapce1 -> Q21),
+	Q11	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q11
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q12
+		  |pickupsuccess.sapce1 -> Q20),
+	Q12	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q12
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q13
+		  |pickupsuccess.sapce1 -> Q19),
+	Q13	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q13
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q14
+		  |pickupsuccess.sapce1 -> Q18),
+	Q14	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q14
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q15
+		  |pickupsuccess.sapce1 -> Q17),
+	Q15	= ({ended, move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |putsuccess.sapce3 -> Q15
+		  |pickupsuccess.sapce1 -> Q16),
+	Q16	= ({ended, move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |putsuccess.sapce3 -> Q15
+		  |pickupsuccess.sapce1 -> Q16),
+	Q17	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q14
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q16
+		  |pickupsuccess.sapce1 -> Q17),
+	Q18	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q13
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q17
+		  |pickupsuccess.sapce1 -> Q18),
+	Q19	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q12
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q18
+		  |pickupsuccess.sapce1 -> Q19),
+	Q20	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q11
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q19
+		  |pickupsuccess.sapce1 -> Q20),
+	Q21	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q10
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q20
+		  |pickupsuccess.sapce1 -> Q21),
+	Q22	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q9
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q21
+		  |pickupsuccess.sapce1 -> Q22),
+	Q23	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q8
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q22
+		  |pickupsuccess.sapce1 -> Q23),
+	Q24	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q7
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q23
+		  |pickupsuccess.sapce1 -> Q24),
+	Q25	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q8
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q26
+		  |pickupsuccess.sapce1 -> Q40),
+	Q26	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q9
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q27
+		  |pickupsuccess.sapce1 -> Q39),
+	Q27	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q10
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q28
+		  |pickupsuccess.sapce1 -> Q38),
+	Q28	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q11
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q29
+		  |pickupsuccess.sapce1 -> Q37),
+	Q29	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q12
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q30
+		  |pickupsuccess.sapce1 -> Q36),
+	Q30	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q13
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q31
+		  |pickupsuccess.sapce1 -> Q35),
+	Q31	= (ended -> ERROR
+		  |putsuccess.sapce3 -> Q14
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q32
+		  |pickupsuccess.sapce1 -> Q34),
+	Q32	= ({ended, move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |putsuccess.sapce3 -> Q15
+		  |pickupsuccess.sapce1 -> Q33),
+	Q33	= ({ended, move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |putsuccess.sapce3 -> Q15
+		  |pickupsuccess.sapce1 -> Q33),
+	Q34	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q14
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q33
+		  |pickupsuccess.sapce1 -> Q34),
+	Q35	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q13
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q34
+		  |pickupsuccess.sapce1 -> Q35),
+	Q36	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q12
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q35
+		  |pickupsuccess.sapce1 -> Q36),
+	Q37	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q11
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q36
+		  |pickupsuccess.sapce1 -> Q37),
+	Q38	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q10
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q37
+		  |pickupsuccess.sapce1 -> Q38),
+	Q39	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q9
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q38
+		  |pickupsuccess.sapce1 -> Q39),
+	Q40	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q8
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q39
+		  |pickupsuccess.sapce1 -> Q40),
+	Q41	= ({ended, pickup.{sapce1, sapce4}} -> ERROR
+		  |putsuccess.sapce3 -> Q7
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q40
+		  |pickupsuccess.sapce1 -> Q41),
+	Q42	= (task.b -> Q7
+		  |putsuccess.sapce3 -> Q42
+		  |pickupsuccess.sapce1 -> Q43
+		  |task.a -> Q79),
+	Q43	= (task.b -> Q24
+		  |putsuccess.sapce3 -> Q42
+		  |pickupsuccess.sapce1 -> Q43
+		  |task.a -> Q44),
+	Q44	= (pickup.{sapce1, sapce4} -> ERROR
+		  |ended -> Q4
+		  |pickupsuccess.sapce1 -> Q44
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q45
+		  |putsuccess.sapce3 -> Q79),
+	Q45	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q45
+		  |ended -> Q46
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q48
+		  |putsuccess.sapce3 -> Q76),
+	Q46	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q46
+		  |putsuccess.sapce3 -> Q47),
+	Q47	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q46
+		  |putsuccess.sapce3 -> Q47),
+	Q48	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q48
+		  |ended -> Q49
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q51
+		  |putsuccess.sapce3 -> Q75),
+	Q49	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q49
+		  |putsuccess.sapce3 -> Q50),
+	Q50	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q49
+		  |putsuccess.sapce3 -> Q50),
+	Q51	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q51
+		  |ended -> Q52
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q54
+		  |putsuccess.sapce3 -> Q74),
+	Q52	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q52
+		  |putsuccess.sapce3 -> Q53),
+	Q53	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q52
+		  |putsuccess.sapce3 -> Q53),
+	Q54	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q54
+		  |ended -> Q55
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q57
+		  |putsuccess.sapce3 -> Q73),
+	Q55	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q55
+		  |putsuccess.sapce3 -> Q56),
+	Q56	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q55
+		  |putsuccess.sapce3 -> Q56),
+	Q57	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q57
+		  |ended -> Q58
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q60
+		  |putsuccess.sapce3 -> Q72),
+	Q58	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q58
+		  |putsuccess.sapce3 -> Q59),
+	Q59	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q58
+		  |putsuccess.sapce3 -> Q59),
+	Q60	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q60
+		  |ended -> Q61
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q63
+		  |putsuccess.sapce3 -> Q71),
+	Q61	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q61
+		  |putsuccess.sapce3 -> Q62),
+	Q62	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q61
+		  |putsuccess.sapce3 -> Q62),
+	Q63	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q63
+		  |ended -> Q64
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q66
+		  |putsuccess.sapce3 -> Q70),
+	Q64	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q64
+		  |putsuccess.sapce3 -> Q65),
+	Q65	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q64
+		  |putsuccess.sapce3 -> Q65),
+	Q66	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |pickupsuccess.sapce1 -> Q66
+		  |ended -> Q67
+		  |putsuccess.sapce3 -> Q69),
+	Q67	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q67
+		  |putsuccess.sapce3 -> Q68),
+	Q68	= (reset -> Q5
+		  |pickupsuccess.sapce1 -> Q67
+		  |putsuccess.sapce3 -> Q68),
+	Q69	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |pickupsuccess.sapce1 -> Q66
+		  |ended -> Q68
+		  |putsuccess.sapce3 -> Q69),
+	Q70	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q63
+		  |ended -> Q65
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q69
+		  |putsuccess.sapce3 -> Q70),
+	Q71	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q60
+		  |ended -> Q62
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q70
+		  |putsuccess.sapce3 -> Q71),
+	Q72	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q57
+		  |ended -> Q59
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q71
+		  |putsuccess.sapce3 -> Q72),
+	Q73	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q54
+		  |ended -> Q56
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q72
+		  |putsuccess.sapce3 -> Q73),
+	Q74	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q51
+		  |ended -> Q53
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q73
+		  |putsuccess.sapce3 -> Q74),
+	Q75	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q48
+		  |ended -> Q50
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q74
+		  |putsuccess.sapce3 -> Q75),
+	Q76	= (pickup.{sapce1, sapce4} -> ERROR
+		  |pickupsuccess.sapce1 -> Q45
+		  |ended -> Q47
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q75
+		  |putsuccess.sapce3 -> Q76),
+	Q77	= (task.b -> Q41
+		  |putsuccess.sapce3 -> Q42
+		  |pickupsuccess.sapce1 -> Q77
+		  |task.a -> Q112),
+	Q78	= (putsuccess.sapce3 -> Q3
+		  |reset -> Q5
+		  |pickupsuccess.sapce1 -> Q78),
+	Q79	= (pickup.{sapce1, sapce4} -> ERROR
+		  |ended -> Q3
+		  |pickupsuccess.sapce1 -> Q44
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q76
+		  |putsuccess.sapce3 -> Q79),
+	Q80	= (putsuccess.sapce3 -> Q76
+		  |ended -> Q81
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q83
+		  |pickupsuccess.sapce1 -> Q111),
+	Q81	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q47
+		  |pickupsuccess.sapce1 -> Q82),
+	Q82	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q47
+		  |pickupsuccess.sapce1 -> Q82),
+	Q83	= (putsuccess.sapce3 -> Q75
+		  |ended -> Q84
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q86
+		  |pickupsuccess.sapce1 -> Q110),
+	Q84	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q50
+		  |pickupsuccess.sapce1 -> Q85),
+	Q85	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q50
+		  |pickupsuccess.sapce1 -> Q85),
+	Q86	= (putsuccess.sapce3 -> Q74
+		  |ended -> Q87
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q89
+		  |pickupsuccess.sapce1 -> Q109),
+	Q87	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q53
+		  |pickupsuccess.sapce1 -> Q88),
+	Q88	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q53
+		  |pickupsuccess.sapce1 -> Q88),
+	Q89	= (putsuccess.sapce3 -> Q73
+		  |ended -> Q90
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q92
+		  |pickupsuccess.sapce1 -> Q108),
+	Q90	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q56
+		  |pickupsuccess.sapce1 -> Q91),
+	Q91	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q56
+		  |pickupsuccess.sapce1 -> Q91),
+	Q92	= (putsuccess.sapce3 -> Q72
+		  |ended -> Q93
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q95
+		  |pickupsuccess.sapce1 -> Q107),
+	Q93	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q59
+		  |pickupsuccess.sapce1 -> Q94),
+	Q94	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q59
+		  |pickupsuccess.sapce1 -> Q94),
+	Q95	= (putsuccess.sapce3 -> Q71
+		  |ended -> Q96
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q98
+		  |pickupsuccess.sapce1 -> Q106),
+	Q96	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q62
+		  |pickupsuccess.sapce1 -> Q97),
+	Q97	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q62
+		  |pickupsuccess.sapce1 -> Q97),
+	Q98	= (putsuccess.sapce3 -> Q70
+		  |ended -> Q99
+		  |{move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q101
+		  |pickupsuccess.sapce1 -> Q105),
+	Q99	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q65
+		  |pickupsuccess.sapce1 -> Q100),
+	Q100	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q65
+		  |pickupsuccess.sapce1 -> Q100),
+	Q101	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |putsuccess.sapce3 -> Q69
+		  |ended -> Q102
+		  |pickupsuccess.sapce1 -> Q104),
+	Q102	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q68
+		  |pickupsuccess.sapce1 -> Q103),
+	Q103	= (reset -> Q5
+		  |putsuccess.sapce3 -> Q68
+		  |pickupsuccess.sapce1 -> Q103),
+	Q104	= ({move.{down, left, right, up}, {pickup, putdown}.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> ERROR
+		  |putsuccess.sapce3 -> Q69
+		  |ended -> Q103
+		  |pickupsuccess.sapce1 -> Q104),
+	Q105	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q70
+		  |ended -> Q100
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q104
+		  |pickupsuccess.sapce1 -> Q105),
+	Q106	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q71
+		  |ended -> Q97
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q105
+		  |pickupsuccess.sapce1 -> Q106),
+	Q107	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q72
+		  |ended -> Q94
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q106
+		  |pickupsuccess.sapce1 -> Q107),
+	Q108	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q73
+		  |ended -> Q91
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q107
+		  |pickupsuccess.sapce1 -> Q108),
+	Q109	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q74
+		  |ended -> Q88
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q108
+		  |pickupsuccess.sapce1 -> Q109),
+	Q110	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q75
+		  |ended -> Q85
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q109
+		  |pickupsuccess.sapce1 -> Q110),
+	Q111	= (pickup.{sapce1, sapce4} -> ERROR
+		  |putsuccess.sapce3 -> Q76
+		  |ended -> Q82
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q110
+		  |pickupsuccess.sapce1 -> Q111),
+	Q112	= (pickup.{sapce1, sapce4} -> ERROR
+		  |ended -> Q78
+		  |putsuccess.sapce3 -> Q79
+		  |{move.{down, left, right, up}, pickup.{sapce2, sapce3, sapce5, sapce6}, putdown.{sapce1, sapce2, sapce3, sapce4, sapce5, sapce6}} -> Q111
+		  |pickupsuccess.sapce1 -> Q112),
+	Q113	= (task.{a, b} -> Q79
+		  |putsuccess.sapce3 -> Q113
+		  |pickupsuccess.sapce1 -> Q114),
+	Q114	= (task.{a, b} -> Q44
+		  |putsuccess.sapce3 -> Q113
+		  |pickupsuccess.sapce1 -> Q114),
+	Q115	= (task.{a, b} -> Q112
+		  |putsuccess.sapce3 -> Q113
+		  |pickupsuccess.sapce1 -> Q115).

@@ -1,0 +1,10 @@
+Process:
+	R8
+States:
+	2
+Transitions:
+	R8 = Q0,
+	Q0	= (task.a -> Q0
+		  |ended -> Q1),
+	Q1	= (ended -> ERROR
+		  |task.a -> Q0).

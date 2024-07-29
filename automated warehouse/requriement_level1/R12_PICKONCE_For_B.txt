@@ -1,0 +1,11 @@
+Process:
+	R12_PICKONCE_For_B
+States:
+	2
+Transitions:
+	R12_PICKONCE_For_B = Q0,
+	Q0	= ({pickup.{sapce1, sapce4}, putsuccess.sapce6, reset} -> Q0
+		  |pickupsuccess.sapce4 -> Q1),
+	Q1	= (pickup.{sapce1, sapce4} -> ERROR
+		  |{putsuccess.sapce6, reset} -> Q0
+		  |pickupsuccess.sapce4 -> Q1).

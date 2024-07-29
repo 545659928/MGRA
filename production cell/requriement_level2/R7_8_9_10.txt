@@ -1,0 +1,1003 @@
+Process:
+	R7_8_9_10
+States:
+	128
+Transitions:
+	R7_8_9_10 = Q0,
+	Q0	= ({[0].reset, {bake, drill}, moveTo.{drill, oven, press, tray}, {press, putdown}} -> Q0
+		  |arrive.press -> Q1
+		  |arrive.oven -> Q123
+		  |pickup -> Q125
+		  |arrive.drill -> Q127),
+	Q1	= (moveTo.{drill, oven, tray} -> Q0
+		  |{[0].reset, arrive.press, {bake, drill}, moveTo.press, press} -> Q1
+		  |arrive.oven -> Q2
+		  |pickup -> Q119
+		  |arrive.drill -> Q121
+		  |putdown -> Q122),
+	Q2	= (moveTo.{drill, tray} -> Q0
+		  |moveTo.press -> Q1
+		  |{[0].reset, arrive.{oven, press}, {bake, drill, press}} -> Q2
+		  |pickup -> Q3
+		  |arrive.drill -> Q5
+		  |putdown -> Q118
+		  |moveTo.oven -> Q123),
+	Q3	= (putdown -> ERROR
+		  |moveTo.{drill, tray} -> Q0
+		  |moveTo.press -> Q1
+		  |{[0].reset, {bake, drill, press}} -> Q2
+		  |{arrive.{oven, press}, pickup} -> Q3
+		  |arrive.drill -> Q4
+		  |moveTo.oven -> Q123),
+	Q4	= (putdown -> ERROR
+		  |moveTo.tray -> Q0
+		  |moveTo.press -> Q1
+		  |{arrive.{drill, oven, press}, pickup} -> Q4
+		  |{[0].reset, {bake, drill, press}} -> Q5
+		  |moveTo.oven -> Q123
+		  |moveTo.drill -> Q127),
+	Q5	= (moveTo.tray -> Q0
+		  |moveTo.press -> Q1
+		  |pickup -> Q4
+		  |{[0].reset, arrive.{drill, oven, press}, {bake, drill, press}} -> Q5
+		  |putdown -> Q6
+		  |moveTo.oven -> Q123
+		  |moveTo.drill -> Q127),
+	Q6	= (pickup -> ERROR
+		  |{[0].reset, arrive.{drill, oven, press}, putdown} -> Q6
+		  |press -> Q7
+		  |moveTo.drill -> Q104
+		  |bake -> Q105
+		  |drill -> Q106
+		  |moveTo.press -> Q107
+		  |moveTo.oven -> Q108
+		  |moveTo.tray -> Q109),
+	Q7	= (pickup -> ERROR
+		  |putdown -> Q6
+		  |{[0].reset, arrive.{drill, oven, press}, press} -> Q7
+		  |moveTo.drill -> Q8
+		  |bake -> Q91
+		  |drill -> Q92
+		  |moveTo.press -> Q93
+		  |moveTo.oven -> Q98
+		  |moveTo.tray -> Q99),
+	Q8	= (pickup -> ERROR
+		  |{[0].reset, {arrive, moveTo}.drill, {press, putdown}} -> Q8
+		  |arrive.press -> Q9
+		  |bake -> Q88
+		  |arrive.oven -> Q89
+		  |drill -> Q90
+		  |moveTo.{oven, press, tray} -> Q99),
+	Q9	= (pickup -> ERROR
+		  |arrive.oven -> Q7
+		  |moveTo.drill -> Q8
+		  |{[0].reset, arrive.{drill, press}, press} -> Q9
+		  |bake -> Q10
+		  |drill -> Q86
+		  |putdown -> Q87
+		  |moveTo.press -> Q93
+		  |moveTo.{oven, tray} -> Q99),
+	Q10	= (pickup -> ERROR
+		  |{[0].reset, arrive.{drill, press}, {bake, press}} -> Q10
+		  |moveTo.press -> Q11
+		  |moveTo.{oven, tray} -> Q82
+		  |putdown -> Q85
+		  |moveTo.drill -> Q88
+		  |arrive.oven -> Q91
+		  |drill -> Q121),
+	Q11	= (drill -> Q1
+		  |arrive.drill -> Q10
+		  |{[0].reset, arrive.press, bake, moveTo.press, press} -> Q11
+		  |arrive.oven -> Q12
+		  |pickup -> Q79
+		  |putdown -> Q81
+		  |moveTo.{drill, oven, tray} -> Q82),
+	Q12	= (drill -> Q2
+		  |moveTo.press -> Q11
+		  |{[0].reset, arrive.{oven, press}, {bake, press}} -> Q12
+		  |pickup -> Q13
+		  |moveTo.oven -> Q15
+		  |putdown -> Q21
+		  |moveTo.{drill, tray} -> Q82
+		  |arrive.drill -> Q91),
+	Q13	= (putdown -> ERROR
+		  |drill -> Q2
+		  |moveTo.press -> Q11
+		  |{[0].reset, {bake, press}} -> Q12
+		  |{arrive.{oven, press}, pickup} -> Q13
+		  |arrive.drill -> Q14
+		  |moveTo.oven -> Q15
+		  |moveTo.{drill, tray} -> Q82),
+	Q14	= ({pickup, putdown} -> ERROR
+		  |drill -> Q5
+		  |moveTo.press -> Q11
+		  |arrive.{drill, oven, press} -> Q14
+		  |moveTo.oven -> Q15
+		  |moveTo.tray -> Q82
+		  |moveTo.drill -> Q88
+		  |{[0].reset, {bake, press}} -> Q91),
+	Q15	= (arrive.press -> Q12
+		  |{[0].reset, arrive.oven, bake, moveTo.oven, press} -> Q15
+		  |pickup -> Q16
+		  |arrive.drill -> Q20
+		  |moveTo.{drill, press, tray} -> Q82
+		  |putdown -> Q98
+		  |drill -> Q123),
+	Q16	= (putdown -> ERROR
+		  |arrive.press -> Q13
+		  |{[0].reset, bake, moveTo.oven, press} -> Q15
+		  |{arrive.oven, pickup} -> Q16
+		  |arrive.drill -> Q17
+		  |moveTo.{drill, press, tray} -> Q82
+		  |drill -> Q123),
+	Q17	= ({pickup, putdown} -> ERROR
+		  |arrive.press -> Q14
+		  |moveTo.oven -> Q15
+		  |arrive.{drill, oven} -> Q17
+		  |drill -> Q18
+		  |{[0].reset, {bake, press}} -> Q20
+		  |moveTo.{press, tray} -> Q82
+		  |moveTo.drill -> Q88),
+	Q18	= (moveTo.{press, tray} -> Q0
+		  |arrive.press -> Q5
+		  |{[0].reset, arrive.{drill, oven}, {bake, drill, press}} -> Q18
+		  |pickup -> Q19
+		  |putdown -> Q89
+		  |moveTo.oven -> Q123
+		  |moveTo.drill -> Q127),
+	Q19	= (putdown -> ERROR
+		  |moveTo.{press, tray} -> Q0
+		  |arrive.press -> Q4
+		  |{[0].reset, {bake, drill, press}} -> Q18
+		  |{arrive.{drill, oven}, pickup} -> Q19
+		  |moveTo.oven -> Q123
+		  |moveTo.drill -> Q127),
+	Q20	= (pickup -> ERROR
+		  |moveTo.oven -> Q15
+		  |drill -> Q18
+		  |{[0].reset, arrive.{drill, oven}, {bake, press}} -> Q20
+		  |moveTo.{press, tray} -> Q82
+		  |moveTo.drill -> Q88
+		  |putdown -> Q89
+		  |arrive.press -> Q91),
+	Q21	= (pickup -> ERROR
+		  |arrive.drill -> Q6
+		  |{[0].reset, arrive.{oven, press}, putdown} -> Q21
+		  |press -> Q22
+		  |bake -> Q78
+		  |moveTo.press -> Q107
+		  |moveTo.oven -> Q108
+		  |moveTo.{drill, tray} -> Q109
+		  |drill -> Q118),
+	Q22	= (pickup -> ERROR
+		  |arrive.drill -> Q7
+		  |bake -> Q12
+		  |putdown -> Q21
+		  |{[0].reset, arrive.{oven, press}, press} -> Q22
+		  |drill -> Q23
+		  |moveTo.press -> Q93
+		  |moveTo.oven -> Q98
+		  |moveTo.{drill, tray} -> Q99),
+	Q23	= (pickup -> ERROR
+		  |bake -> Q2
+		  |{[0].reset, arrive.{oven, press}, {drill, press}} -> Q23
+		  |moveTo.press -> Q24
+		  |moveTo.oven -> Q72
+		  |moveTo.{drill, tray} -> Q73
+		  |arrive.drill -> Q92
+		  |putdown -> Q118),
+	Q24	= (bake -> Q1
+		  |arrive.oven -> Q23
+		  |{[0].reset, arrive.press, drill, moveTo.press, press} -> Q24
+		  |pickup -> Q25
+		  |putdown -> Q29
+		  |moveTo.{drill, oven, tray} -> Q73
+		  |arrive.drill -> Q86),
+	Q25	= (putdown -> ERROR
+		  |bake -> Q1
+		  |{[0].reset, drill, moveTo.press, press} -> Q24
+		  |{arrive.press, pickup} -> Q25
+		  |arrive.oven -> Q26
+		  |arrive.drill -> Q28
+		  |moveTo.{drill, oven, tray} -> Q73),
+	Q26	= ({pickup, putdown} -> ERROR
+		  |bake -> Q2
+		  |{[0].reset, {drill, press}} -> Q23
+		  |moveTo.press -> Q24
+		  |arrive.{oven, press} -> Q26
+		  |arrive.drill -> Q27
+		  |moveTo.oven -> Q72
+		  |moveTo.{drill, tray} -> Q73),
+	Q27	= ({pickup, putdown} -> ERROR
+		  |bake -> Q5
+		  |moveTo.press -> Q24
+		  |arrive.{drill, oven, press} -> Q27
+		  |moveTo.oven -> Q72
+		  |moveTo.tray -> Q73
+		  |moveTo.drill -> Q90
+		  |{[0].reset, {drill, press}} -> Q92),
+	Q28	= (putdown -> ERROR
+		  |moveTo.press -> Q24
+		  |arrive.oven -> Q27
+		  |{arrive.{drill, press}, pickup} -> Q28
+		  |moveTo.{oven, tray} -> Q73
+		  |{[0].reset, {drill, press}} -> Q86
+		  |moveTo.drill -> Q90
+		  |bake -> Q121),
+	Q29	= (pickup -> ERROR
+		  |press -> Q24
+		  |{[0].reset, arrive.press, drill, moveTo.press, putdown} -> Q29
+		  |arrive.drill -> Q30
+		  |moveTo.{drill, oven, tray} -> Q67
+		  |arrive.oven -> Q118
+		  |bake -> Q122),
+	Q30	= (pickup -> ERROR
+		  |moveTo.press -> Q29
+		  |{[0].reset, arrive.{drill, press}, drill} -> Q30
+		  |moveTo.drill -> Q31
+		  |bake -> Q66
+		  |moveTo.{oven, tray} -> Q67
+		  |press -> Q86
+		  |putdown -> Q87
+		  |arrive.oven -> Q106),
+	Q31	= (arrive.press -> Q30
+		  |{[0].reset, arrive.drill, drill, moveTo.drill} -> Q31
+		  |bake -> Q32
+		  |arrive.oven -> Q60
+		  |pickup -> Q62
+		  |moveTo.{oven, press, tray} -> Q67
+		  |press -> Q90
+		  |putdown -> Q104),
+	Q32	= ({[0].reset, arrive.drill, {bake, drill}, moveTo.drill} -> Q32
+		  |arrive.oven -> Q33
+		  |pickup -> Q54
+		  |moveTo.{oven, press, tray} -> Q56
+		  |putdown -> Q59
+		  |arrive.press -> Q66
+		  |press -> Q127),
+	Q33	= (press -> Q18
+		  |moveTo.drill -> Q32
+		  |{[0].reset, arrive.{drill, oven}, {bake, drill}} -> Q33
+		  |arrive.press -> Q34
+		  |pickup -> Q35
+		  |moveTo.oven -> Q37
+		  |putdown -> Q42
+		  |moveTo.{press, tray} -> Q56),
+	Q34	= (pickup -> ERROR
+		  |press -> Q5
+		  |putdown -> Q6
+		  |moveTo.drill -> Q32
+		  |{[0].reset, arrive.{drill, oven, press}, {bake, drill}} -> Q34
+		  |moveTo.oven -> Q37
+		  |moveTo.tray -> Q56
+		  |moveTo.press -> Q122),
+	Q35	= (putdown -> ERROR
+		  |press -> Q18
+		  |moveTo.drill -> Q32
+		  |{[0].reset, {bake, drill}} -> Q33
+		  |{arrive.{drill, oven}, pickup} -> Q35
+		  |arrive.press -> Q36
+		  |moveTo.oven -> Q37
+		  |moveTo.{press, tray} -> Q56),
+	Q36	= ({pickup, putdown} -> ERROR
+		  |press -> Q5
+		  |moveTo.drill -> Q32
+		  |{[0].reset, {bake, drill}} -> Q34
+		  |arrive.{drill, oven, press} -> Q36
+		  |moveTo.oven -> Q37
+		  |moveTo.tray -> Q56
+		  |moveTo.press -> Q122),
+	Q37	= (arrive.drill -> Q33
+		  |{[0].reset, arrive.oven, {bake, drill}, moveTo.oven} -> Q37
+		  |arrive.press -> Q38
+		  |pickup -> Q39
+		  |putdown -> Q41
+		  |moveTo.{drill, press, tray} -> Q56
+		  |press -> Q123),
+	Q38	= (pickup -> ERROR
+		  |press -> Q2
+		  |arrive.drill -> Q34
+		  |moveTo.oven -> Q37
+		  |{[0].reset, arrive.{oven, press}, {bake, drill}} -> Q38
+		  |moveTo.{drill, tray} -> Q56
+		  |putdown -> Q118
+		  |moveTo.press -> Q122),
+	Q39	= (putdown -> ERROR
+		  |arrive.drill -> Q35
+		  |{[0].reset, {bake, drill}, moveTo.oven} -> Q37
+		  |{arrive.oven, pickup} -> Q39
+		  |arrive.press -> Q40
+		  |moveTo.{drill, press, tray} -> Q56
+		  |press -> Q123),
+	Q40	= ({pickup, putdown} -> ERROR
+		  |press -> Q2
+		  |arrive.drill -> Q36
+		  |moveTo.oven -> Q37
+		  |{[0].reset, {bake, drill}} -> Q38
+		  |arrive.{oven, press} -> Q40
+		  |moveTo.{drill, tray} -> Q56
+		  |moveTo.press -> Q122),
+	Q41	= (pickup -> ERROR
+		  |bake -> Q37
+		  |{[0].reset, arrive.oven, drill, moveTo.oven, putdown} -> Q41
+		  |arrive.drill -> Q60
+		  |moveTo.{drill, press, tray} -> Q67
+		  |press -> Q72
+		  |arrive.press -> Q118),
+	Q42	= (pickup -> ERROR
+		  |arrive.press -> Q6
+		  |{[0].reset, arrive.{drill, oven}, putdown} -> Q42
+		  |bake -> Q43
+		  |drill -> Q60
+		  |press -> Q89
+		  |moveTo.drill -> Q104
+		  |moveTo.oven -> Q108
+		  |moveTo.{press, tray} -> Q109),
+	Q43	= (pickup -> ERROR
+		  |press -> Q20
+		  |drill -> Q33
+		  |putdown -> Q42
+		  |{[0].reset, arrive.{drill, oven}, bake} -> Q43
+		  |moveTo.oven -> Q44
+		  |moveTo.{press, tray} -> Q49
+		  |moveTo.drill -> Q59
+		  |arrive.press -> Q105),
+	Q44	= (press -> Q15
+		  |drill -> Q37
+		  |arrive.drill -> Q43
+		  |{[0].reset, arrive.oven, bake, moveTo.oven} -> Q44
+		  |pickup -> Q45
+		  |moveTo.{drill, press, tray} -> Q49
+		  |arrive.press -> Q78
+		  |putdown -> Q108),
+	Q45	= (putdown -> ERROR
+		  |press -> Q15
+		  |drill -> Q37
+		  |{[0].reset, bake, moveTo.oven} -> Q44
+		  |{arrive.oven, pickup} -> Q45
+		  |arrive.press -> Q46
+		  |arrive.drill -> Q48
+		  |moveTo.{drill, press, tray} -> Q49),
+	Q46	= ({pickup, putdown} -> ERROR
+		  |press -> Q12
+		  |drill -> Q38
+		  |moveTo.oven -> Q44
+		  |arrive.{oven, press} -> Q46
+		  |arrive.drill -> Q47
+		  |moveTo.{drill, tray} -> Q49
+		  |{[0].reset, bake} -> Q78
+		  |moveTo.press -> Q81),
+	Q47	= ({pickup, putdown} -> ERROR
+		  |drill -> Q34
+		  |moveTo.oven -> Q44
+		  |arrive.{drill, oven, press} -> Q47
+		  |moveTo.tray -> Q49
+		  |moveTo.drill -> Q59
+		  |moveTo.press -> Q81
+		  |press -> Q91
+		  |{[0].reset, bake} -> Q105),
+	Q48	= ({pickup, putdown} -> ERROR
+		  |press -> Q20
+		  |drill -> Q33
+		  |{[0].reset, bake} -> Q43
+		  |moveTo.oven -> Q44
+		  |arrive.press -> Q47
+		  |arrive.{drill, oven} -> Q48
+		  |moveTo.{press, tray} -> Q49
+		  |moveTo.drill -> Q59),
+	Q49	= (arrive.oven -> Q44
+		  |{[0].reset, bake, moveTo.{drill, oven, press, tray}, putdown} -> Q49
+		  |pickup -> Q50
+		  |drill -> Q56
+		  |arrive.drill -> Q59
+		  |arrive.press -> Q81
+		  |press -> Q82),
+	Q50	= (putdown -> ERROR
+		  |arrive.oven -> Q45
+		  |{[0].reset, bake, moveTo.{drill, oven, press, tray}} -> Q49
+		  |pickup -> Q50
+		  |arrive.press -> Q51
+		  |arrive.drill -> Q53
+		  |drill -> Q56
+		  |press -> Q82),
+	Q51	= ({pickup, putdown} -> ERROR
+		  |press -> Q11
+		  |arrive.oven -> Q46
+		  |moveTo.{drill, oven, tray} -> Q49
+		  |arrive.press -> Q51
+		  |arrive.drill -> Q52
+		  |{[0].reset, bake, moveTo.press} -> Q81
+		  |drill -> Q122),
+	Q52	= ({pickup, putdown} -> ERROR
+		  |press -> Q10
+		  |arrive.oven -> Q47
+		  |moveTo.{oven, tray} -> Q49
+		  |arrive.{drill, press} -> Q52
+		  |moveTo.drill -> Q59
+		  |drill -> Q66
+		  |moveTo.press -> Q81
+		  |{[0].reset, bake} -> Q85),
+	Q53	= ({pickup, putdown} -> ERROR
+		  |drill -> Q32
+		  |arrive.oven -> Q48
+		  |moveTo.{oven, press, tray} -> Q49
+		  |arrive.press -> Q52
+		  |arrive.drill -> Q53
+		  |{[0].reset, bake, moveTo.drill} -> Q59
+		  |press -> Q88),
+	Q54	= (putdown -> ERROR
+		  |{[0].reset, {bake, drill}, moveTo.drill} -> Q32
+		  |arrive.oven -> Q35
+		  |{arrive.drill, pickup} -> Q54
+		  |arrive.press -> Q55
+		  |moveTo.{oven, press, tray} -> Q56
+		  |press -> Q127),
+	Q55	= ({pickup, putdown} -> ERROR
+		  |moveTo.drill -> Q32
+		  |arrive.oven -> Q36
+		  |arrive.{drill, press} -> Q55
+		  |moveTo.{oven, tray} -> Q56
+		  |{[0].reset, {bake, drill}} -> Q66
+		  |press -> Q121
+		  |moveTo.press -> Q122),
+	Q56	= (press -> Q0
+		  |arrive.drill -> Q32
+		  |arrive.oven -> Q37
+		  |{[0].reset, {bake, drill}, moveTo.{drill, oven, press, tray}, putdown} -> Q56
+		  |pickup -> Q57
+		  |arrive.press -> Q122),
+	Q57	= (putdown -> ERROR
+		  |press -> Q0
+		  |arrive.oven -> Q39
+		  |arrive.drill -> Q54
+		  |{[0].reset, {bake, drill}, moveTo.{drill, oven, press, tray}} -> Q56
+		  |pickup -> Q57
+		  |arrive.press -> Q58),
+	Q58	= ({pickup, putdown} -> ERROR
+		  |press -> Q1
+		  |arrive.oven -> Q40
+		  |arrive.drill -> Q55
+		  |moveTo.{drill, oven, tray} -> Q56
+		  |arrive.press -> Q58
+		  |{[0].reset, {bake, drill}, moveTo.press} -> Q122),
+	Q59	= (pickup -> ERROR
+		  |drill -> Q32
+		  |arrive.oven -> Q43
+		  |moveTo.{oven, press, tray} -> Q49
+		  |{[0].reset, arrive.drill, bake, moveTo.drill, putdown} -> Q59
+		  |arrive.press -> Q85
+		  |press -> Q88),
+	Q60	= (pickup -> ERROR
+		  |moveTo.drill -> Q31
+		  |bake -> Q33
+		  |moveTo.oven -> Q41
+		  |putdown -> Q42
+		  |{[0].reset, arrive.{drill, oven}, drill} -> Q60
+		  |press -> Q61
+		  |moveTo.{press, tray} -> Q67
+		  |arrive.press -> Q106),
+	Q61	= (pickup -> ERROR
+		  |bake -> Q18
+		  |{[0].reset, arrive.{drill, oven}, {drill, press}} -> Q61
+		  |moveTo.oven -> Q72
+		  |moveTo.{press, tray} -> Q73
+		  |putdown -> Q89
+		  |moveTo.drill -> Q90
+		  |arrive.press -> Q92),
+	Q62	= (putdown -> ERROR
+		  |{[0].reset, drill, moveTo.drill} -> Q31
+		  |bake -> Q32
+		  |{arrive.drill, pickup} -> Q62
+		  |arrive.press -> Q63
+		  |arrive.oven -> Q65
+		  |moveTo.{oven, press, tray} -> Q67
+		  |press -> Q90),
+	Q63	= ({pickup, putdown} -> ERROR
+		  |moveTo.press -> Q29
+		  |{[0].reset, drill} -> Q30
+		  |moveTo.drill -> Q31
+		  |arrive.{drill, press} -> Q63
+		  |arrive.oven -> Q64
+		  |bake -> Q66
+		  |moveTo.{oven, tray} -> Q67
+		  |press -> Q86),
+	Q64	= ({pickup, putdown} -> ERROR
+		  |moveTo.press -> Q29
+		  |moveTo.drill -> Q31
+		  |bake -> Q34
+		  |moveTo.oven -> Q41
+		  |arrive.{drill, oven, press} -> Q64
+		  |moveTo.tray -> Q67
+		  |press -> Q92
+		  |{[0].reset, drill} -> Q106),
+	Q65	= ({pickup, putdown} -> ERROR
+		  |moveTo.drill -> Q31
+		  |bake -> Q33
+		  |moveTo.oven -> Q41
+		  |{[0].reset, drill} -> Q60
+		  |press -> Q61
+		  |arrive.press -> Q64
+		  |arrive.{drill, oven} -> Q65
+		  |moveTo.{press, tray} -> Q67),
+	Q66	= (pickup -> ERROR
+		  |moveTo.drill -> Q32
+		  |arrive.oven -> Q34
+		  |moveTo.{oven, tray} -> Q56
+		  |{[0].reset, arrive.{drill, press}, {bake, drill}} -> Q66
+		  |putdown -> Q85
+		  |press -> Q121
+		  |moveTo.press -> Q122),
+	Q67	= (arrive.press -> Q29
+		  |arrive.drill -> Q31
+		  |arrive.oven -> Q41
+		  |bake -> Q56
+		  |{[0].reset, drill, moveTo.{drill, oven, press, tray}, putdown} -> Q67
+		  |pickup -> Q68
+		  |press -> Q73),
+	Q68	= (putdown -> ERROR
+		  |bake -> Q56
+		  |arrive.drill -> Q62
+		  |{[0].reset, drill, moveTo.{drill, oven, press, tray}} -> Q67
+		  |pickup -> Q68
+		  |arrive.press -> Q69
+		  |arrive.oven -> Q71
+		  |press -> Q73),
+	Q69	= ({pickup, putdown} -> ERROR
+		  |press -> Q24
+		  |{[0].reset, drill, moveTo.press} -> Q29
+		  |arrive.drill -> Q63
+		  |moveTo.{drill, oven, tray} -> Q67
+		  |arrive.press -> Q69
+		  |arrive.oven -> Q70
+		  |bake -> Q122),
+	Q70	= ({pickup, putdown} -> ERROR
+		  |press -> Q23
+		  |moveTo.press -> Q29
+		  |bake -> Q38
+		  |moveTo.oven -> Q41
+		  |arrive.drill -> Q64
+		  |moveTo.{drill, tray} -> Q67
+		  |arrive.{oven, press} -> Q70
+		  |{[0].reset, drill} -> Q118),
+	Q71	= ({pickup, putdown} -> ERROR
+		  |bake -> Q37
+		  |{[0].reset, drill, moveTo.oven} -> Q41
+		  |arrive.drill -> Q65
+		  |moveTo.{drill, press, tray} -> Q67
+		  |arrive.press -> Q70
+		  |arrive.oven -> Q71
+		  |press -> Q72),
+	Q72	= (pickup -> ERROR
+		  |arrive.press -> Q23
+		  |arrive.drill -> Q61
+		  |{[0].reset, arrive.oven, drill, moveTo.oven, {press, putdown}} -> Q72
+		  |moveTo.{drill, press, tray} -> Q73
+		  |bake -> Q123),
+	Q73	= (bake -> Q0
+		  |arrive.press -> Q24
+		  |arrive.oven -> Q72
+		  |{[0].reset, drill, moveTo.{drill, oven, press, tray}, {press, putdown}} -> Q73
+		  |pickup -> Q74
+		  |arrive.drill -> Q90),
+	Q74	= (putdown -> ERROR
+		  |bake -> Q0
+		  |arrive.press -> Q25
+		  |{[0].reset, drill, moveTo.{drill, oven, press, tray}, press} -> Q73
+		  |pickup -> Q74
+		  |arrive.oven -> Q75
+		  |arrive.drill -> Q77),
+	Q75	= ({pickup, putdown} -> ERROR
+		  |arrive.press -> Q26
+		  |{[0].reset, drill, moveTo.oven, press} -> Q72
+		  |moveTo.{drill, press, tray} -> Q73
+		  |arrive.oven -> Q75
+		  |arrive.drill -> Q76
+		  |bake -> Q123),
+	Q76	= ({pickup, putdown} -> ERROR
+		  |bake -> Q18
+		  |arrive.press -> Q27
+		  |{[0].reset, {drill, press}} -> Q61
+		  |moveTo.oven -> Q72
+		  |moveTo.{press, tray} -> Q73
+		  |arrive.{drill, oven} -> Q76
+		  |moveTo.drill -> Q90),
+	Q77	= (putdown -> ERROR
+		  |arrive.press -> Q28
+		  |moveTo.{oven, press, tray} -> Q73
+		  |arrive.oven -> Q76
+		  |{arrive.drill, pickup} -> Q77
+		  |{[0].reset, drill, moveTo.drill, press} -> Q90
+		  |bake -> Q127),
+	Q78	= (pickup -> ERROR
+		  |press -> Q12
+		  |putdown -> Q21
+		  |drill -> Q38
+		  |moveTo.oven -> Q44
+		  |moveTo.{drill, tray} -> Q49
+		  |{[0].reset, arrive.{oven, press}, bake} -> Q78
+		  |moveTo.press -> Q81
+		  |arrive.drill -> Q105),
+	Q79	= (putdown -> ERROR
+		  |drill -> Q1
+		  |{[0].reset, bake, moveTo.press, press} -> Q11
+		  |arrive.oven -> Q13
+		  |{arrive.press, pickup} -> Q79
+		  |arrive.drill -> Q80
+		  |moveTo.{drill, oven, tray} -> Q82),
+	Q80	= ({pickup, putdown} -> ERROR
+		  |{[0].reset, {bake, press}} -> Q10
+		  |moveTo.press -> Q11
+		  |arrive.oven -> Q14
+		  |arrive.{drill, press} -> Q80
+		  |moveTo.{oven, tray} -> Q82
+		  |moveTo.drill -> Q88
+		  |drill -> Q121),
+	Q81	= (pickup -> ERROR
+		  |press -> Q11
+		  |moveTo.{drill, oven, tray} -> Q49
+		  |arrive.oven -> Q78
+		  |{[0].reset, arrive.press, bake, moveTo.press, putdown} -> Q81
+		  |arrive.drill -> Q85
+		  |drill -> Q122),
+	Q82	= (drill -> Q0
+		  |arrive.press -> Q11
+		  |arrive.oven -> Q15
+		  |{[0].reset, bake, moveTo.{drill, oven, press, tray}, {press, putdown}} -> Q82
+		  |pickup -> Q83
+		  |arrive.drill -> Q88),
+	Q83	= (putdown -> ERROR
+		  |drill -> Q0
+		  |arrive.oven -> Q16
+		  |arrive.press -> Q79
+		  |{[0].reset, bake, moveTo.{drill, oven, press, tray}, press} -> Q82
+		  |pickup -> Q83
+		  |arrive.drill -> Q84),
+	Q84	= ({pickup, putdown} -> ERROR
+		  |arrive.oven -> Q17
+		  |arrive.press -> Q80
+		  |moveTo.{oven, press, tray} -> Q82
+		  |arrive.drill -> Q84
+		  |{[0].reset, bake, moveTo.drill, press} -> Q88
+		  |drill -> Q127),
+	Q85	= (pickup -> ERROR
+		  |press -> Q10
+		  |moveTo.{oven, tray} -> Q49
+		  |moveTo.drill -> Q59
+		  |drill -> Q66
+		  |moveTo.press -> Q81
+		  |{[0].reset, arrive.{drill, press}, {bake, putdown}} -> Q85
+		  |arrive.oven -> Q105),
+	Q86	= (moveTo.press -> Q24
+		  |pickup -> Q28
+		  |moveTo.{oven, tray} -> Q73
+		  |{[0].reset, arrive.{drill, press}, {drill, press}} -> Q86
+		  |putdown -> Q87
+		  |moveTo.drill -> Q90
+		  |arrive.oven -> Q92
+		  |bake -> Q121),
+	Q87	= (pickup -> ERROR
+		  |arrive.oven -> Q6
+		  |press -> Q9
+		  |drill -> Q30
+		  |bake -> Q85
+		  |{[0].reset, arrive.{drill, press}, putdown} -> Q87
+		  |moveTo.drill -> Q104
+		  |moveTo.press -> Q107
+		  |moveTo.{oven, tray} -> Q109),
+	Q88	= (pickup -> ERROR
+		  |arrive.press -> Q10
+		  |arrive.oven -> Q20
+		  |moveTo.{oven, press, tray} -> Q82
+		  |{[0].reset, arrive.drill, bake, moveTo.drill, {press, putdown}} -> Q88
+		  |drill -> Q127),
+	Q89	= (pickup -> ERROR
+		  |arrive.press -> Q7
+		  |moveTo.drill -> Q8
+		  |bake -> Q20
+		  |drill -> Q61
+		  |{[0].reset, arrive.{drill, oven}, {press, putdown}} -> Q89
+		  |moveTo.oven -> Q98
+		  |moveTo.{press, tray} -> Q99),
+	Q90	= (putdown -> Q8
+		  |arrive.oven -> Q61
+		  |moveTo.{oven, press, tray} -> Q73
+		  |pickup -> Q77
+		  |arrive.press -> Q86
+		  |{[0].reset, arrive.drill, drill, moveTo.drill, press} -> Q90
+		  |bake -> Q127),
+	Q91	= (pickup -> ERROR
+		  |drill -> Q5
+		  |putdown -> Q6
+		  |moveTo.press -> Q11
+		  |moveTo.oven -> Q15
+		  |moveTo.tray -> Q82
+		  |moveTo.drill -> Q88
+		  |{[0].reset, arrive.{drill, oven, press}, {bake, press}} -> Q91),
+	Q92	= (pickup -> ERROR
+		  |bake -> Q5
+		  |putdown -> Q6
+		  |moveTo.press -> Q24
+		  |moveTo.oven -> Q72
+		  |moveTo.tray -> Q73
+		  |moveTo.drill -> Q90
+		  |{[0].reset, arrive.{drill, oven, press}, {drill, press}} -> Q92),
+	Q93	= (arrive.drill -> Q9
+		  |bake -> Q11
+		  |arrive.oven -> Q22
+		  |drill -> Q24
+		  |{[0].reset, {arrive, moveTo}.press, press} -> Q93
+		  |pickup -> Q94
+		  |moveTo.{drill, oven, tray} -> Q99
+		  |putdown -> Q107),
+	Q94	= (putdown -> ERROR
+		  |bake -> Q11
+		  |drill -> Q24
+		  |{[0].reset, moveTo.press, press} -> Q93
+		  |{arrive.press, pickup} -> Q94
+		  |arrive.oven -> Q95
+		  |arrive.drill -> Q97
+		  |moveTo.{drill, oven, tray} -> Q99),
+	Q95	= ({pickup, putdown} -> ERROR
+		  |bake -> Q12
+		  |{[0].reset, press} -> Q22
+		  |drill -> Q23
+		  |moveTo.press -> Q93
+		  |arrive.{oven, press} -> Q95
+		  |arrive.drill -> Q96
+		  |moveTo.oven -> Q98
+		  |moveTo.{drill, tray} -> Q99),
+	Q96	= ({pickup, putdown} -> ERROR
+		  |{[0].reset, press} -> Q7
+		  |moveTo.drill -> Q8
+		  |bake -> Q91
+		  |drill -> Q92
+		  |moveTo.press -> Q93
+		  |arrive.{drill, oven, press} -> Q96
+		  |moveTo.oven -> Q98
+		  |moveTo.tray -> Q99),
+	Q97	= ({pickup, putdown} -> ERROR
+		  |moveTo.drill -> Q8
+		  |{[0].reset, press} -> Q9
+		  |bake -> Q10
+		  |drill -> Q86
+		  |moveTo.press -> Q93
+		  |arrive.oven -> Q96
+		  |arrive.{drill, press} -> Q97
+		  |moveTo.{oven, tray} -> Q99),
+	Q98	= (pickup -> ERROR
+		  |bake -> Q15
+		  |arrive.press -> Q22
+		  |drill -> Q72
+		  |arrive.drill -> Q89
+		  |{[0].reset, {arrive, moveTo}.oven, {press, putdown}} -> Q98
+		  |moveTo.{drill, press, tray} -> Q99),
+	Q99	= (arrive.drill -> Q8
+		  |drill -> Q73
+		  |bake -> Q82
+		  |arrive.press -> Q93
+		  |arrive.oven -> Q98
+		  |{[0].reset, moveTo.{drill, oven, press, tray}, {press, putdown}} -> Q99
+		  |pickup -> Q100),
+	Q100	= (putdown -> ERROR
+		  |drill -> Q73
+		  |bake -> Q82
+		  |arrive.press -> Q94
+		  |{[0].reset, moveTo.{drill, oven, press, tray}, press} -> Q99
+		  |pickup -> Q100
+		  |arrive.oven -> Q101
+		  |arrive.drill -> Q103),
+	Q101	= ({pickup, putdown} -> ERROR
+		  |bake -> Q15
+		  |drill -> Q72
+		  |arrive.press -> Q95
+		  |{[0].reset, moveTo.oven, press} -> Q98
+		  |moveTo.{drill, press, tray} -> Q99
+		  |arrive.oven -> Q101
+		  |arrive.drill -> Q102),
+	Q102	= ({pickup, putdown} -> ERROR
+		  |moveTo.drill -> Q8
+		  |bake -> Q20
+		  |drill -> Q61
+		  |{[0].reset, press} -> Q89
+		  |arrive.press -> Q96
+		  |moveTo.oven -> Q98
+		  |moveTo.{press, tray} -> Q99
+		  |arrive.{drill, oven} -> Q102),
+	Q103	= ({pickup, putdown} -> ERROR
+		  |{[0].reset, moveTo.drill, press} -> Q8
+		  |bake -> Q88
+		  |drill -> Q90
+		  |arrive.press -> Q97
+		  |moveTo.{oven, press, tray} -> Q99
+		  |arrive.oven -> Q102
+		  |arrive.drill -> Q103),
+	Q104	= (pickup -> ERROR
+		  |press -> Q8
+		  |drill -> Q31
+		  |arrive.oven -> Q42
+		  |bake -> Q59
+		  |arrive.press -> Q87
+		  |{[0].reset, {arrive, moveTo}.drill, putdown} -> Q104
+		  |moveTo.{oven, press, tray} -> Q109),
+	Q105	= (pickup -> ERROR
+		  |putdown -> Q6
+		  |drill -> Q34
+		  |moveTo.oven -> Q44
+		  |moveTo.tray -> Q49
+		  |moveTo.drill -> Q59
+		  |moveTo.press -> Q81
+		  |press -> Q91
+		  |{[0].reset, arrive.{drill, oven, press}, bake} -> Q105),
+	Q106	= (pickup -> ERROR
+		  |putdown -> Q6
+		  |moveTo.press -> Q29
+		  |moveTo.drill -> Q31
+		  |bake -> Q34
+		  |moveTo.oven -> Q41
+		  |moveTo.tray -> Q67
+		  |press -> Q92
+		  |{[0].reset, arrive.{drill, oven, press}, drill} -> Q106),
+	Q107	= (pickup -> ERROR
+		  |arrive.oven -> Q21
+		  |drill -> Q29
+		  |bake -> Q81
+		  |arrive.drill -> Q87
+		  |press -> Q93
+		  |{[0].reset, {arrive, moveTo}.press, putdown} -> Q107
+		  |moveTo.{drill, oven, tray} -> Q109),
+	Q108	= (pickup -> ERROR
+		  |arrive.press -> Q21
+		  |drill -> Q41
+		  |arrive.drill -> Q42
+		  |bake -> Q44
+		  |press -> Q98
+		  |{[0].reset, {arrive, moveTo}.oven, putdown} -> Q108
+		  |moveTo.{drill, press, tray} -> Q109),
+	Q109	= (bake -> Q49
+		  |drill -> Q67
+		  |press -> Q99
+		  |arrive.drill -> Q104
+		  |arrive.press -> Q107
+		  |arrive.oven -> Q108
+		  |{[0].reset, moveTo.{drill, oven, press, tray}, putdown} -> Q109
+		  |pickup -> Q110),
+	Q110	= (putdown -> ERROR
+		  |bake -> Q49
+		  |drill -> Q67
+		  |press -> Q99
+		  |{[0].reset, moveTo.{drill, oven, press, tray}} -> Q109
+		  |pickup -> Q110
+		  |arrive.press -> Q111
+		  |arrive.oven -> Q115
+		  |arrive.drill -> Q117),
+	Q111	= ({pickup, putdown} -> ERROR
+		  |drill -> Q29
+		  |bake -> Q81
+		  |press -> Q93
+		  |{[0].reset, moveTo.press} -> Q107
+		  |moveTo.{drill, oven, tray} -> Q109
+		  |arrive.press -> Q111
+		  |arrive.oven -> Q112
+		  |arrive.drill -> Q114),
+	Q112	= ({pickup, putdown} -> ERROR
+		  |[0].reset -> Q21
+		  |press -> Q22
+		  |bake -> Q78
+		  |moveTo.press -> Q107
+		  |moveTo.oven -> Q108
+		  |moveTo.{drill, tray} -> Q109
+		  |arrive.{oven, press} -> Q112
+		  |arrive.drill -> Q113
+		  |drill -> Q118),
+	Q113	= ({pickup, putdown} -> ERROR
+		  |[0].reset -> Q6
+		  |press -> Q7
+		  |moveTo.drill -> Q104
+		  |bake -> Q105
+		  |drill -> Q106
+		  |moveTo.press -> Q107
+		  |moveTo.oven -> Q108
+		  |moveTo.tray -> Q109
+		  |arrive.{drill, oven, press} -> Q113),
+	Q114	= ({pickup, putdown} -> ERROR
+		  |press -> Q9
+		  |drill -> Q30
+		  |bake -> Q85
+		  |[0].reset -> Q87
+		  |moveTo.drill -> Q104
+		  |moveTo.press -> Q107
+		  |moveTo.{oven, tray} -> Q109
+		  |arrive.oven -> Q113
+		  |arrive.{drill, press} -> Q114),
+	Q115	= ({pickup, putdown} -> ERROR
+		  |drill -> Q41
+		  |bake -> Q44
+		  |press -> Q98
+		  |{[0].reset, moveTo.oven} -> Q108
+		  |moveTo.{drill, press, tray} -> Q109
+		  |arrive.press -> Q112
+		  |arrive.oven -> Q115
+		  |arrive.drill -> Q116),
+	Q116	= ({pickup, putdown} -> ERROR
+		  |[0].reset -> Q42
+		  |bake -> Q43
+		  |drill -> Q60
+		  |press -> Q89
+		  |moveTo.drill -> Q104
+		  |moveTo.oven -> Q108
+		  |moveTo.{press, tray} -> Q109
+		  |arrive.press -> Q113
+		  |arrive.{drill, oven} -> Q116),
+	Q117	= ({pickup, putdown} -> ERROR
+		  |press -> Q8
+		  |drill -> Q31
+		  |bake -> Q59
+		  |{[0].reset, moveTo.drill} -> Q104
+		  |moveTo.{oven, press, tray} -> Q109
+		  |arrive.press -> Q114
+		  |arrive.oven -> Q116
+		  |arrive.drill -> Q117),
+	Q118	= (pickup -> ERROR
+		  |press -> Q23
+		  |moveTo.press -> Q29
+		  |bake -> Q38
+		  |moveTo.oven -> Q41
+		  |moveTo.{drill, tray} -> Q67
+		  |arrive.drill -> Q106
+		  |{[0].reset, arrive.{oven, press}, {drill, putdown}} -> Q118),
+	Q119	= (putdown -> ERROR
+		  |moveTo.{drill, oven, tray} -> Q0
+		  |{[0].reset, {bake, drill}, moveTo.press, press} -> Q1
+		  |arrive.oven -> Q3
+		  |{arrive.press, pickup} -> Q119
+		  |arrive.drill -> Q120),
+	Q120	= (putdown -> ERROR
+		  |moveTo.{oven, tray} -> Q0
+		  |moveTo.press -> Q1
+		  |arrive.oven -> Q4
+		  |{arrive.{drill, press}, pickup} -> Q120
+		  |{[0].reset, {bake, drill, press}} -> Q121
+		  |moveTo.drill -> Q127),
+	Q121	= (moveTo.{oven, tray} -> Q0
+		  |moveTo.press -> Q1
+		  |arrive.oven -> Q5
+		  |putdown -> Q85
+		  |pickup -> Q120
+		  |{[0].reset, arrive.{drill, press}, {bake, drill, press}} -> Q121
+		  |moveTo.drill -> Q127),
+	Q122	= (pickup -> ERROR
+		  |press -> Q1
+		  |arrive.oven -> Q38
+		  |moveTo.{drill, oven, tray} -> Q56
+		  |arrive.drill -> Q66
+		  |{[0].reset, arrive.press, {bake, drill}, moveTo.press, putdown} -> Q122),
+	Q123	= (moveTo.{drill, press, tray} -> Q0
+		  |arrive.press -> Q2
+		  |arrive.drill -> Q18
+		  |putdown -> Q72
+		  |{[0].reset, arrive.oven, {bake, drill}, moveTo.oven, press} -> Q123
+		  |pickup -> Q124),
+	Q124	= (putdown -> ERROR
+		  |moveTo.{drill, press, tray} -> Q0
+		  |arrive.press -> Q3
+		  |arrive.drill -> Q19
+		  |{[0].reset, {bake, drill}, moveTo.oven, press} -> Q123
+		  |{arrive.oven, pickup} -> Q124),
+	Q125	= (putdown -> ERROR
+		  |{[0].reset, {bake, drill}, moveTo.{drill, oven, press, tray}, press} -> Q0
+		  |arrive.press -> Q119
+		  |arrive.oven -> Q124
+		  |pickup -> Q125
+		  |arrive.drill -> Q126),
+	Q126	= (putdown -> ERROR
+		  |moveTo.{oven, press, tray} -> Q0
+		  |arrive.oven -> Q19
+		  |arrive.press -> Q120
+		  |{arrive.drill, pickup} -> Q126
+		  |{[0].reset, {bake, drill}, moveTo.drill, press} -> Q127),
+	Q127	= (moveTo.{oven, press, tray} -> Q0
+		  |arrive.oven -> Q18
+		  |putdown -> Q88
+		  |arrive.press -> Q121
+		  |pickup -> Q126
+		  |{[0].reset, arrive.drill, {bake, drill}, moveTo.drill, press} -> Q127).

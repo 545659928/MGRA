@@ -1,0 +1,32 @@
+Process:
+	R17_18
+States:
+	8
+Transitions:
+	R17_18 = Q0,
+	Q0	= ([0].endPress -> ERROR
+		  |[0].endBaking -> Q1
+		  |[0].endDrill -> Q3
+		  |[0].reset -> Q4),
+	Q1	= ([0].endPress -> ERROR
+		  |[0].endBaking -> Q1
+		  |[0].endDrill -> Q2
+		  |[0].reset -> Q4),
+	Q2	= ([0].{endBaking, endDrill, endPress} -> Q2
+		  |[0].reset -> Q4),
+	Q3	= ([0].endPress -> ERROR
+		  |[0].endBaking -> Q2
+		  |[0].endDrill -> Q3
+		  |[0].reset -> Q4),
+	Q4	= ([0].{endPress, reset} -> ERROR
+		  |[0].endBaking -> Q5
+		  |[0].endDrill -> Q7),
+	Q5	= ([0].{endPress, reset} -> ERROR
+		  |[0].endBaking -> Q5
+		  |[0].endDrill -> Q6),
+	Q6	= ([0].reset -> ERROR
+		  |[0].endPress -> Q2
+		  |[0].{endBaking, endDrill} -> Q6),
+	Q7	= ([0].{endPress, reset} -> ERROR
+		  |[0].endBaking -> Q6
+		  |[0].endDrill -> Q7).

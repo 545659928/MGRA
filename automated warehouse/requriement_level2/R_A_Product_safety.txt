@@ -1,0 +1,11 @@
+Process:
+	R_A_Product_safety
+States:
+	2
+Transitions:
+	R_A_Product_safety = Q0,
+	Q0	= ({arrive.{sapce4, sapce6}, putsuccess.sapce3, reset} -> Q0
+		  |pickupsuccess.sapce1 -> Q1),
+	Q1	= (arrive.{sapce4, sapce6} -> ERROR
+		  |{putsuccess.sapce3, reset} -> Q0
+		  |pickupsuccess.sapce1 -> Q1).

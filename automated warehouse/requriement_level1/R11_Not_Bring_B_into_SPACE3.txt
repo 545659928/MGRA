@@ -1,0 +1,11 @@
+Process:
+	R11_Not_Bring_B_into_SPACE3
+States:
+	2
+Transitions:
+	R11_Not_Bring_B_into_SPACE3 = Q0,
+	Q0	= ({arrive.sapce3, putsuccess.sapce6, reset} -> Q0
+		  |pickupsuccess.sapce4 -> Q1),
+	Q1	= (arrive.sapce3 -> ERROR
+		  |{putsuccess.sapce6, reset} -> Q0
+		  |pickupsuccess.sapce4 -> Q1).

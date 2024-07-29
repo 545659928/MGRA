@@ -1,0 +1,11 @@
+Process:
+	R13_DrillToProduct
+States:
+	2
+Transitions:
+	R13_DrillToProduct = Q0,
+	Q0	= (drill -> ERROR
+		  |[0].pickupSuccess.drill -> Q0
+		  |[0].putSuccess.drill -> Q1),
+	Q1	= ([0].pickupSuccess.drill -> Q0
+		  |{[0].putSuccess.drill, drill} -> Q1).

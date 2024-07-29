@@ -1,0 +1,11 @@
+Process:
+	R4_DontMoveWithNoMeanT
+States:
+	2
+Transitions:
+	R4_DontMoveWithNoMeanT = Q0,
+	Q0	= ({moveTo.{drill, oven, press}, {pickup, putdown}} -> Q0
+		  |arrive.tray -> Q1),
+	Q1	= (moveTo.{drill, oven, press} -> ERROR
+		  |{pickup, putdown} -> Q0
+		  |arrive.tray -> Q1).

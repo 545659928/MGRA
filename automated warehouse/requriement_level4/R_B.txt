@@ -1,0 +1,975 @@
+Process:
+	R_B
+States:
+	144
+Transitions:
+	R_B = Q0,
+	Q0	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, reset} -> Q0
+		  |pickup.sapce4 -> Q1
+		  |putsuccess.sapce3 -> Q131
+		  |task.b -> Q135
+		  |task.a -> Q137
+		  |pickupsuccess.sapce1 -> Q138
+		  |putsuccess.sapce6 -> Q139
+		  |pickupsuccess.sapce4 -> Q142),
+	Q1	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4} -> Q1
+		  |putsuccess.sapce3 -> Q2
+		  |task.b -> Q116
+		  |task.a -> Q124
+		  |pickupsuccess.sapce1 -> Q125
+		  |putsuccess.sapce6 -> Q139
+		  |pickupsuccess.sapce4 -> Q142),
+	Q2	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, putsuccess.sapce3} -> Q2
+		  |task.b -> Q3
+		  |task.a -> Q104
+		  |pickupsuccess.sapce1 -> Q105
+		  |putsuccess.sapce6 -> Q111
+		  |pickupsuccess.sapce4 -> Q114),
+	Q3	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, putsuccess.sapce3, task.b} -> Q3
+		  |task.a -> Q4
+		  |pickupsuccess.sapce1 -> Q97
+		  |putsuccess.sapce6 -> Q101
+		  |pickupsuccess.sapce4 -> Q102),
+	Q4	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, putsuccess.sapce3, task.{a, b}} -> Q4
+		  |pickupsuccess.sapce1 -> Q5
+		  |putsuccess.sapce6 -> Q95
+		  |pickupsuccess.sapce4 -> Q96),
+	Q5	= ({pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.{a, b}} -> Q5
+		  |ended -> Q6
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce4 -> Q94),
+	Q6	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q5
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.b} -> Q6
+		  |putsuccess.sapce6 -> Q7
+		  |pickupsuccess.sapce4 -> Q92),
+	Q7	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}, task.b} -> Q7
+		  |reset -> Q8
+		  |pickupsuccess.sapce4 -> Q91
+		  |task.a -> Q93),
+	Q8	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, reset} -> Q8
+		  |pickup.sapce4 -> Q9
+		  |putsuccess.sapce3 -> Q67
+		  |task.b -> Q75
+		  |pickupsuccess.sapce1 -> Q79
+		  |putsuccess.sapce6 -> Q81
+		  |pickupsuccess.sapce4 -> Q87
+		  |task.a -> Q137),
+	Q9	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4} -> Q9
+		  |putsuccess.sapce3 -> Q10
+		  |task.b -> Q39
+		  |pickupsuccess.sapce1 -> Q55
+		  |putsuccess.sapce6 -> Q81
+		  |pickupsuccess.sapce4 -> Q87
+		  |task.a -> Q124),
+	Q10	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, putsuccess.sapce3} -> Q10
+		  |task.b -> Q11
+		  |pickupsuccess.sapce1 -> Q22
+		  |putsuccess.sapce6 -> Q29
+		  |pickupsuccess.sapce4 -> Q35
+		  |task.a -> Q104),
+	Q11	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q4
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, putsuccess.sapce3, task.b} -> Q11
+		  |pickupsuccess.sapce1 -> Q12
+		  |putsuccess.sapce6 -> Q18
+		  |pickupsuccess.sapce4 -> Q19),
+	Q12	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q5
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.b} -> Q12
+		  |putsuccess.sapce6 -> Q13
+		  |pickupsuccess.sapce4 -> Q14),
+	Q13	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}, task.b} -> Q13
+		  |pickupsuccess.sapce4 -> Q91
+		  |task.a -> Q93),
+	Q14	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3, task.b} -> Q14
+		  |pickup.sapce4 -> Q15
+		  |task.a -> Q94),
+	Q15	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |pickupsuccess.sapce4 -> Q14
+		  |{pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.b} -> Q15
+		  |task.a -> Q16),
+	Q16	= ({arrive.{sapce2, sapce3}, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |{pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.{a, b}} -> Q16
+		  |ended -> Q17
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce4 -> Q94),
+	Q17	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |task.a -> Q16
+		  |{pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.b} -> Q17
+		  |pickupsuccess.sapce4 -> Q92),
+	Q18	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickupsuccess.sapce1 -> Q13
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}, task.b} -> Q18
+		  |pickupsuccess.sapce4 -> Q91
+		  |task.a -> Q95),
+	Q19	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |pickupsuccess.sapce1 -> Q14
+		  |{pickup.sapce1, pickupsuccess.sapce4, putsuccess.sapce3, task.b} -> Q19
+		  |pickup.sapce4 -> Q20
+		  |task.a -> Q96),
+	Q20	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |pickupsuccess.sapce1 -> Q15
+		  |pickupsuccess.sapce4 -> Q19
+		  |{pickup.sapce4, putsuccess.sapce3, task.b} -> Q20
+		  |task.a -> Q21),
+	Q21	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |pickupsuccess.sapce1 -> Q16
+		  |{pickup.sapce4, putsuccess.sapce3, task.{a, b}} -> Q21
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce4 -> Q96),
+	Q22	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q5
+		  |task.b -> Q12
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3} -> Q22
+		  |putsuccess.sapce6 -> Q23
+		  |pickupsuccess.sapce4 -> Q27),
+	Q23	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |task.b -> Q13
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}} -> Q23
+		  |pickupsuccess.sapce4 -> Q24
+		  |task.a -> Q93),
+	Q24	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |{pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3} -> Q24
+		  |task.a -> Q25
+		  |putsuccess.sapce6 -> Q26
+		  |task.b -> Q91),
+	Q25	= ({arrive.{sapce2, sapce3}, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |{pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3, task.{a, b}} -> Q25
+		  |ended -> Q91
+		  |putsuccess.sapce6 -> Q93),
+	Q26	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |task.b -> Q7
+		  |reset -> Q8
+		  |pickupsuccess.sapce4 -> Q24
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}} -> Q26
+		  |task.a -> Q93),
+	Q27	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |task.b -> Q14
+		  |putsuccess.sapce6 -> Q26
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3} -> Q27
+		  |pickup.sapce4 -> Q28
+		  |task.a -> Q94),
+	Q28	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.b -> Q15
+		  |task.a -> Q16
+		  |putsuccess.sapce6 -> Q26
+		  |pickupsuccess.sapce4 -> Q27
+		  |{pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3} -> Q28),
+	Q29	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |task.b -> Q18
+		  |pickupsuccess.sapce1 -> Q23
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}} -> Q29
+		  |task.a -> Q30
+		  |pickupsuccess.sapce4 -> Q33),
+	Q30	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}, task.a} -> Q30
+		  |pickupsuccess.sapce4 -> Q31
+		  |pickupsuccess.sapce1 -> Q93
+		  |task.b -> Q95),
+	Q31	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |{pickupsuccess.sapce1, task.b} -> Q25
+		  |{pickupsuccess.sapce4, putsuccess.sapce3, task.a} -> Q31
+		  |putsuccess.sapce6 -> Q32),
+	Q32	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q31
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}, task.a} -> Q32
+		  |{pickupsuccess.sapce1, task.b} -> Q93),
+	Q33	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickupsuccess.sapce1 -> Q24
+		  |task.a -> Q31
+		  |{pickupsuccess.sapce4, putsuccess.sapce3} -> Q33
+		  |putsuccess.sapce6 -> Q34
+		  |task.b -> Q91),
+	Q34	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |task.b -> Q7
+		  |reset -> Q8
+		  |pickupsuccess.sapce1 -> Q26
+		  |task.a -> Q32
+		  |pickupsuccess.sapce4 -> Q33
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}} -> Q34),
+	Q35	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |task.b -> Q19
+		  |pickupsuccess.sapce1 -> Q27
+		  |putsuccess.sapce6 -> Q34
+		  |{pickup.sapce1, pickupsuccess.sapce4, putsuccess.sapce3} -> Q35
+		  |pickup.sapce4 -> Q36
+		  |task.a -> Q38),
+	Q36	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.b -> Q20
+		  |pickupsuccess.sapce1 -> Q28
+		  |putsuccess.sapce6 -> Q34
+		  |pickupsuccess.sapce4 -> Q35
+		  |{pickup.sapce4, putsuccess.sapce3} -> Q36
+		  |task.a -> Q37),
+	Q37	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |pickupsuccess.sapce1 -> Q16
+		  |task.b -> Q21
+		  |putsuccess.sapce6 -> Q32
+		  |{pickup.sapce4, putsuccess.sapce3, task.a} -> Q37
+		  |pickupsuccess.sapce4 -> Q38),
+	Q38	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce6 -> Q32
+		  |pickup.sapce4 -> Q37
+		  |{pickup.sapce1, pickupsuccess.sapce4, putsuccess.sapce3, task.a} -> Q38
+		  |pickupsuccess.sapce1 -> Q94
+		  |task.b -> Q96),
+	Q39	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q11
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, task.b} -> Q39
+		  |task.a -> Q40
+		  |pickupsuccess.sapce1 -> Q48
+		  |putsuccess.sapce6 -> Q52
+		  |pickupsuccess.sapce4 -> Q53),
+	Q40	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q4
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, task.{a, b}} -> Q40
+		  |pickupsuccess.sapce1 -> Q41
+		  |putsuccess.sapce6 -> Q45
+		  |pickupsuccess.sapce4 -> Q46),
+	Q41	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q5
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, task.{a, b}} -> Q41
+		  |putsuccess.sapce6 -> Q42
+		  |pickupsuccess.sapce4 -> Q43),
+	Q42	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6, task.{a, b}} -> Q42
+		  |putsuccess.sapce3 -> Q93),
+	Q43	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, task.{a, b}} -> Q43
+		  |pickup.sapce4 -> Q44
+		  |putsuccess.sapce6 -> Q93
+		  |putsuccess.sapce3 -> Q94),
+	Q44	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q16
+		  |pickupsuccess.sapce4 -> Q43
+		  |{pickup.sapce4, pickupsuccess.sapce1, task.{a, b}} -> Q44
+		  |putsuccess.sapce6 -> Q93),
+	Q45	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |pickupsuccess.sapce1 -> Q42
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6, task.{a, b}} -> Q45
+		  |putsuccess.sapce3 -> Q95),
+	Q46	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce1 -> Q43
+		  |{pickup.sapce1, pickupsuccess.sapce4, task.{a, b}} -> Q46
+		  |pickup.sapce4 -> Q47
+		  |putsuccess.sapce6 -> Q93
+		  |putsuccess.sapce3 -> Q96),
+	Q47	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q21
+		  |pickupsuccess.sapce1 -> Q44
+		  |pickupsuccess.sapce4 -> Q46
+		  |{pickup.sapce4, task.{a, b}} -> Q47
+		  |putsuccess.sapce6 -> Q93),
+	Q48	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q12
+		  |task.a -> Q41
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, task.b} -> Q48
+		  |putsuccess.sapce6 -> Q49
+		  |pickupsuccess.sapce4 -> Q50),
+	Q49	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q13
+		  |task.a -> Q42
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6, task.b} -> Q49
+		  |pickupsuccess.sapce4 -> Q91),
+	Q50	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q14
+		  |task.a -> Q43
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, task.b} -> Q50
+		  |pickup.sapce4 -> Q51),
+	Q51	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |putsuccess.sapce3 -> Q15
+		  |task.a -> Q44
+		  |pickupsuccess.sapce4 -> Q50
+		  |{pickup.sapce4, pickupsuccess.sapce1, task.b} -> Q51),
+	Q52	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q18
+		  |task.a -> Q45
+		  |pickupsuccess.sapce1 -> Q49
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6, task.b} -> Q52
+		  |pickupsuccess.sapce4 -> Q91),
+	Q53	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q19
+		  |task.a -> Q46
+		  |pickupsuccess.sapce1 -> Q50
+		  |{pickup.sapce1, pickupsuccess.sapce4, task.b} -> Q53
+		  |pickup.sapce4 -> Q54),
+	Q54	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |putsuccess.sapce3 -> Q20
+		  |task.a -> Q47
+		  |pickupsuccess.sapce1 -> Q51
+		  |pickupsuccess.sapce4 -> Q53
+		  |{pickup.sapce4, task.b} -> Q54),
+	Q55	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q22
+		  |task.b -> Q48
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1} -> Q55
+		  |task.a -> Q56
+		  |putsuccess.sapce6 -> Q62
+		  |pickupsuccess.sapce4 -> Q65),
+	Q56	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q5
+		  |task.b -> Q41
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, task.a} -> Q56
+		  |putsuccess.sapce6 -> Q57
+		  |pickupsuccess.sapce4 -> Q60),
+	Q57	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.b -> Q42
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6, task.a} -> Q57
+		  |pickupsuccess.sapce4 -> Q58
+		  |putsuccess.sapce3 -> Q93),
+	Q58	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |{putsuccess.sapce3, task.b} -> Q25
+		  |{pickupsuccess.{sapce1, sapce4}, task.a} -> Q58
+		  |putsuccess.sapce6 -> Q59),
+	Q59	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q58
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6, task.a} -> Q59
+		  |{putsuccess.sapce3, task.b} -> Q93),
+	Q60	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.b -> Q43
+		  |putsuccess.sapce6 -> Q59
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, task.a} -> Q60
+		  |pickup.sapce4 -> Q61
+		  |putsuccess.sapce3 -> Q94),
+	Q61	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q16
+		  |task.b -> Q44
+		  |putsuccess.sapce6 -> Q59
+		  |pickupsuccess.sapce4 -> Q60
+		  |{pickup.sapce4, pickupsuccess.sapce1, task.a} -> Q61),
+	Q62	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q23
+		  |task.b -> Q49
+		  |task.a -> Q57
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6} -> Q62
+		  |pickupsuccess.sapce4 -> Q63),
+	Q63	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q24
+		  |task.a -> Q58
+		  |pickupsuccess.{sapce1, sapce4} -> Q63
+		  |putsuccess.sapce6 -> Q64
+		  |task.b -> Q91),
+	Q64	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |task.b -> Q7
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q26
+		  |task.a -> Q59
+		  |pickupsuccess.sapce4 -> Q63
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6} -> Q64),
+	Q65	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q27
+		  |task.b -> Q50
+		  |task.a -> Q60
+		  |putsuccess.sapce6 -> Q64
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}} -> Q65
+		  |pickup.sapce4 -> Q66),
+	Q66	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q28
+		  |task.b -> Q51
+		  |task.a -> Q61
+		  |putsuccess.sapce6 -> Q64
+		  |pickupsuccess.sapce4 -> Q65
+		  |{pickup.sapce4, pickupsuccess.sapce1} -> Q66),
+	Q67	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q10
+		  |putsuccess.sapce6 -> Q29
+		  |pickupsuccess.sapce4 -> Q35
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, putsuccess.sapce3} -> Q67
+		  |task.b -> Q68
+		  |task.a -> Q73
+		  |pickupsuccess.sapce1 -> Q74),
+	Q68	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q11
+		  |putsuccess.sapce6 -> Q18
+		  |pickupsuccess.sapce4 -> Q19
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, putsuccess.sapce3, task.b} -> Q68
+		  |task.a -> Q69
+		  |pickupsuccess.sapce1 -> Q72),
+	Q69	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q4
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, putsuccess.sapce3, task.{a, b}} -> Q69
+		  |pickupsuccess.sapce1 -> Q70
+		  |putsuccess.sapce6 -> Q95
+		  |pickupsuccess.sapce4 -> Q96),
+	Q70	= (putdown.{sapce4, sapce5} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q5
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, putsuccess.sapce3, task.{a, b}} -> Q70
+		  |ended -> Q71
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce4 -> Q94),
+	Q71	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |pickup.sapce4 -> Q6
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |task.a -> Q70
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, putsuccess.sapce3, task.b} -> Q71
+		  |pickupsuccess.sapce4 -> Q92),
+	Q72	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q12
+		  |putsuccess.sapce6 -> Q13
+		  |pickupsuccess.sapce4 -> Q14
+		  |task.a -> Q70
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, putsuccess.sapce3, task.b} -> Q72),
+	Q73	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce6 -> Q30
+		  |pickupsuccess.sapce4 -> Q38
+		  |task.b -> Q69
+		  |pickupsuccess.sapce1 -> Q70
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, putsuccess.sapce3, task.a} -> Q73
+		  |pickup.sapce4 -> Q104),
+	Q74	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q22
+		  |putsuccess.sapce6 -> Q23
+		  |pickupsuccess.sapce4 -> Q27
+		  |task.a -> Q70
+		  |task.b -> Q72
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, putsuccess.sapce3} -> Q74),
+	Q75	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q39
+		  |putsuccess.sapce6 -> Q52
+		  |pickupsuccess.sapce4 -> Q53
+		  |putsuccess.sapce3 -> Q68
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, task.b} -> Q75
+		  |task.a -> Q76
+		  |pickupsuccess.sapce1 -> Q78),
+	Q76	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q40
+		  |putsuccess.sapce6 -> Q45
+		  |pickupsuccess.sapce4 -> Q46
+		  |putsuccess.sapce3 -> Q69
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, task.{a, b}} -> Q76
+		  |pickupsuccess.sapce1 -> Q77),
+	Q77	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q41
+		  |putsuccess.sapce6 -> Q42
+		  |pickupsuccess.sapce4 -> Q43
+		  |putsuccess.sapce3 -> Q70
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, task.{a, b}} -> Q77),
+	Q78	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q48
+		  |putsuccess.sapce6 -> Q49
+		  |pickupsuccess.sapce4 -> Q50
+		  |putsuccess.sapce3 -> Q72
+		  |task.a -> Q77
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, task.b} -> Q78),
+	Q79	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q55
+		  |putsuccess.sapce6 -> Q62
+		  |pickupsuccess.sapce4 -> Q65
+		  |putsuccess.sapce3 -> Q74
+		  |task.b -> Q78
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1} -> Q79
+		  |task.a -> Q80),
+	Q80	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q56
+		  |putsuccess.sapce6 -> Q57
+		  |pickupsuccess.sapce4 -> Q60
+		  |putsuccess.sapce3 -> Q70
+		  |task.b -> Q77
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, task.a} -> Q80),
+	Q81	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q29
+		  |task.b -> Q52
+		  |pickupsuccess.sapce1 -> Q62
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6} -> Q81
+		  |task.a -> Q82
+		  |pickupsuccess.sapce4 -> Q85),
+	Q82	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce3 -> Q30
+		  |task.b -> Q45
+		  |pickupsuccess.sapce1 -> Q57
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6, task.a} -> Q82
+		  |pickupsuccess.sapce4 -> Q83),
+	Q83	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.b -> Q25
+		  |putsuccess.sapce3 -> Q31
+		  |pickupsuccess.sapce1 -> Q58
+		  |{pickupsuccess.sapce4, task.a} -> Q83
+		  |putsuccess.sapce6 -> Q84),
+	Q84	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce3 -> Q32
+		  |pickupsuccess.sapce1 -> Q59
+		  |pickupsuccess.sapce4 -> Q83
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6, task.a} -> Q84
+		  |task.b -> Q93),
+	Q85	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q33
+		  |pickupsuccess.sapce1 -> Q63
+		  |task.a -> Q83
+		  |pickupsuccess.sapce4 -> Q85
+		  |putsuccess.sapce6 -> Q86
+		  |task.b -> Q91),
+	Q86	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |task.b -> Q7
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q34
+		  |pickupsuccess.sapce1 -> Q64
+		  |task.a -> Q84
+		  |pickupsuccess.sapce4 -> Q85
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6} -> Q86),
+	Q87	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q8
+		  |putsuccess.sapce3 -> Q35
+		  |task.b -> Q53
+		  |pickupsuccess.sapce1 -> Q65
+		  |putsuccess.sapce6 -> Q86
+		  |{pickup.sapce1, pickupsuccess.sapce4} -> Q87
+		  |pickup.sapce4 -> Q88
+		  |task.a -> Q90),
+	Q88	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q36
+		  |task.b -> Q54
+		  |pickupsuccess.sapce1 -> Q66
+		  |putsuccess.sapce6 -> Q86
+		  |pickupsuccess.sapce4 -> Q87
+		  |pickup.sapce4 -> Q88
+		  |task.a -> Q89),
+	Q89	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q37
+		  |task.b -> Q47
+		  |pickupsuccess.sapce1 -> Q61
+		  |putsuccess.sapce6 -> Q84
+		  |{pickup.sapce4, task.a} -> Q89
+		  |pickupsuccess.sapce4 -> Q90),
+	Q90	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce3 -> Q38
+		  |task.b -> Q46
+		  |pickupsuccess.sapce1 -> Q60
+		  |putsuccess.sapce6 -> Q84
+		  |pickup.sapce4 -> Q89
+		  |{pickup.sapce1, pickupsuccess.sapce4, task.a} -> Q90),
+	Q91	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |task.a -> Q25
+		  |{pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3, task.b} -> Q91),
+	Q92	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |putsuccess.sapce6 -> Q7
+		  |reset -> Q8
+		  |pickup.sapce4 -> Q17
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3, task.b} -> Q92
+		  |task.a -> Q94),
+	Q93	= ({pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |ended -> Q7
+		  |pickupsuccess.sapce4 -> Q25
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}, task.{a, b}} -> Q93),
+	Q94	= ({arrive.{sapce2, sapce3}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q16
+		  |ended -> Q92
+		  |putsuccess.sapce6 -> Q93
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3, task.{a, b}} -> Q94),
+	Q95	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |pickupsuccess.sapce1 -> Q93
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}, task.{a, b}} -> Q95),
+	Q96	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q21
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce1 -> Q94
+		  |{pickup.sapce1, pickupsuccess.sapce4, putsuccess.sapce3, task.{a, b}} -> Q96),
+	Q97	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q5
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.b} -> Q97
+		  |putsuccess.sapce6 -> Q98
+		  |pickupsuccess.sapce4 -> Q99),
+	Q98	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |task.a -> Q93
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}, task.b} -> Q98),
+	Q99	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce6 -> Q93
+		  |task.a -> Q94
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3, task.b} -> Q99
+		  |pickup.sapce4 -> Q100),
+	Q100	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q16
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce4 -> Q99
+		  |{pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3, task.b} -> Q100),
+	Q101	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |task.a -> Q95
+		  |pickupsuccess.sapce1 -> Q98
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}, task.b} -> Q101),
+	Q102	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce6 -> Q93
+		  |task.a -> Q96
+		  |pickupsuccess.sapce1 -> Q99
+		  |{pickup.sapce1, pickupsuccess.sapce4, putsuccess.sapce3, task.b} -> Q102
+		  |pickup.sapce4 -> Q103),
+	Q103	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q21
+		  |putsuccess.sapce6 -> Q93
+		  |pickupsuccess.sapce1 -> Q100
+		  |pickupsuccess.sapce4 -> Q102
+		  |{pickup.sapce4, putsuccess.sapce3, task.b} -> Q103),
+	Q104	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.b -> Q4
+		  |pickupsuccess.sapce1 -> Q5
+		  |putsuccess.sapce6 -> Q30
+		  |pickupsuccess.sapce4 -> Q38
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, putsuccess.sapce3, task.a} -> Q104),
+	Q105	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q5
+		  |task.b -> Q97
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3} -> Q105
+		  |putsuccess.sapce6 -> Q106
+		  |pickupsuccess.sapce4 -> Q109),
+	Q106	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q93
+		  |task.b -> Q98
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}} -> Q106
+		  |pickupsuccess.sapce4 -> Q107),
+	Q107	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.{a, b} -> Q25
+		  |{pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3} -> Q107
+		  |putsuccess.sapce6 -> Q108),
+	Q108	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.{a, b} -> Q93
+		  |pickupsuccess.sapce4 -> Q107
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.{sapce3, sapce6}} -> Q108),
+	Q109	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q94
+		  |task.b -> Q99
+		  |putsuccess.sapce6 -> Q108
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, putsuccess.sapce3} -> Q109
+		  |pickup.sapce4 -> Q110),
+	Q110	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q16
+		  |task.b -> Q100
+		  |putsuccess.sapce6 -> Q108
+		  |pickupsuccess.sapce4 -> Q109
+		  |{pickup.sapce4, pickupsuccess.sapce1, putsuccess.sapce3} -> Q110),
+	Q111	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q30
+		  |task.b -> Q101
+		  |pickupsuccess.sapce1 -> Q106
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}} -> Q111
+		  |pickupsuccess.sapce4 -> Q112),
+	Q112	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.b -> Q25
+		  |task.a -> Q31
+		  |pickupsuccess.sapce1 -> Q107
+		  |{pickupsuccess.sapce4, putsuccess.sapce3} -> Q112
+		  |putsuccess.sapce6 -> Q113),
+	Q113	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q32
+		  |task.b -> Q93
+		  |pickupsuccess.sapce1 -> Q108
+		  |pickupsuccess.sapce4 -> Q112
+		  |{arrive.{sapce2, sapce3}, putsuccess.{sapce3, sapce6}} -> Q113),
+	Q114	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q38
+		  |task.b -> Q102
+		  |pickupsuccess.sapce1 -> Q109
+		  |putsuccess.sapce6 -> Q113
+		  |{pickup.sapce1, pickupsuccess.sapce4, putsuccess.sapce3} -> Q114
+		  |pickup.sapce4 -> Q115),
+	Q115	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q37
+		  |task.b -> Q103
+		  |pickupsuccess.sapce1 -> Q110
+		  |putsuccess.sapce6 -> Q113
+		  |pickupsuccess.sapce4 -> Q114
+		  |{pickup.sapce4, putsuccess.sapce3} -> Q115),
+	Q116	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |putsuccess.sapce3 -> Q3
+		  |task.a -> Q40
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, task.b} -> Q116
+		  |pickupsuccess.sapce1 -> Q117
+		  |putsuccess.sapce6 -> Q121
+		  |pickupsuccess.sapce4 -> Q122),
+	Q117	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q41
+		  |putsuccess.sapce3 -> Q97
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1, task.b} -> Q117
+		  |putsuccess.sapce6 -> Q118
+		  |pickupsuccess.sapce4 -> Q119),
+	Q118	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |task.a -> Q42
+		  |putsuccess.sapce3 -> Q98
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6, task.b} -> Q118),
+	Q119	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q43
+		  |putsuccess.sapce6 -> Q93
+		  |putsuccess.sapce3 -> Q99
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}, task.b} -> Q119
+		  |pickup.sapce4 -> Q120),
+	Q120	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q44
+		  |putsuccess.sapce6 -> Q93
+		  |putsuccess.sapce3 -> Q100
+		  |pickupsuccess.sapce4 -> Q119
+		  |{pickup.sapce4, pickupsuccess.sapce1, task.b} -> Q120),
+	Q121	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickupsuccess.sapce4 -> Q25
+		  |task.a -> Q45
+		  |putsuccess.sapce3 -> Q101
+		  |pickupsuccess.sapce1 -> Q118
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6, task.b} -> Q121),
+	Q122	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q46
+		  |putsuccess.sapce6 -> Q93
+		  |putsuccess.sapce3 -> Q102
+		  |pickupsuccess.sapce1 -> Q119
+		  |{pickup.sapce1, pickupsuccess.sapce4, task.b} -> Q122
+		  |pickup.sapce4 -> Q123),
+	Q123	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q47
+		  |putsuccess.sapce6 -> Q93
+		  |putsuccess.sapce3 -> Q103
+		  |pickupsuccess.sapce1 -> Q120
+		  |pickupsuccess.sapce4 -> Q122
+		  |{pickup.sapce4, task.b} -> Q123),
+	Q124	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.b -> Q40
+		  |pickupsuccess.sapce1 -> Q56
+		  |putsuccess.sapce6 -> Q82
+		  |pickupsuccess.sapce4 -> Q90
+		  |putsuccess.sapce3 -> Q104
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, task.a} -> Q124),
+	Q125	= ({ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q56
+		  |putsuccess.sapce3 -> Q105
+		  |task.b -> Q117
+		  |{arrive.{sapce2, sapce3}, pickup.sapce4, pickupsuccess.sapce1} -> Q125
+		  |putsuccess.sapce6 -> Q126
+		  |pickupsuccess.sapce4 -> Q129),
+	Q126	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q57
+		  |putsuccess.sapce3 -> Q106
+		  |task.b -> Q118
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6} -> Q126
+		  |pickupsuccess.sapce4 -> Q127),
+	Q127	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.b -> Q25
+		  |task.a -> Q58
+		  |putsuccess.sapce3 -> Q107
+		  |pickupsuccess.{sapce1, sapce4} -> Q127
+		  |putsuccess.sapce6 -> Q128),
+	Q128	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q59
+		  |task.b -> Q93
+		  |putsuccess.sapce3 -> Q108
+		  |pickupsuccess.sapce4 -> Q127
+		  |{arrive.{sapce2, sapce3}, pickupsuccess.sapce1, putsuccess.sapce6} -> Q128),
+	Q129	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q60
+		  |putsuccess.sapce3 -> Q109
+		  |task.b -> Q119
+		  |putsuccess.sapce6 -> Q128
+		  |{pickup.sapce1, pickupsuccess.{sapce1, sapce4}} -> Q129
+		  |pickup.sapce4 -> Q130),
+	Q130	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q61
+		  |putsuccess.sapce3 -> Q110
+		  |task.b -> Q120
+		  |putsuccess.sapce6 -> Q128
+		  |pickupsuccess.sapce4 -> Q129
+		  |{pickup.sapce4, pickupsuccess.sapce1} -> Q130),
+	Q131	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q2
+		  |task.a -> Q73
+		  |putsuccess.sapce6 -> Q111
+		  |pickupsuccess.sapce4 -> Q114
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, putsuccess.sapce3} -> Q131
+		  |task.b -> Q132
+		  |pickupsuccess.sapce1 -> Q134),
+	Q132	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |pickup.sapce4 -> Q3
+		  |task.a -> Q69
+		  |putsuccess.sapce6 -> Q101
+		  |pickupsuccess.sapce4 -> Q102
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, putsuccess.sapce3, task.b} -> Q132
+		  |pickupsuccess.sapce1 -> Q133),
+	Q133	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q70
+		  |pickup.sapce4 -> Q97
+		  |putsuccess.sapce6 -> Q98
+		  |pickupsuccess.sapce4 -> Q99
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, putsuccess.sapce3, task.b} -> Q133),
+	Q134	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q70
+		  |pickup.sapce4 -> Q105
+		  |putsuccess.sapce6 -> Q106
+		  |pickupsuccess.sapce4 -> Q109
+		  |task.b -> Q133
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, putsuccess.sapce3} -> Q134),
+	Q135	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q76
+		  |pickup.sapce4 -> Q116
+		  |putsuccess.sapce6 -> Q121
+		  |pickupsuccess.sapce4 -> Q122
+		  |putsuccess.sapce3 -> Q132
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, task.b} -> Q135
+		  |pickupsuccess.sapce1 -> Q136),
+	Q136	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q77
+		  |pickup.sapce4 -> Q117
+		  |putsuccess.sapce6 -> Q118
+		  |pickupsuccess.sapce4 -> Q119
+		  |putsuccess.sapce3 -> Q133
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1, task.b} -> Q136),
+	Q137	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |putsuccess.sapce3 -> Q73
+		  |task.b -> Q76
+		  |pickupsuccess.sapce1 -> Q80
+		  |putsuccess.sapce6 -> Q82
+		  |pickupsuccess.sapce4 -> Q90
+		  |pickup.sapce4 -> Q124
+		  |{arrive.{sapce2, sapce3}, pickup.sapce1, task.a} -> Q137),
+	Q138	= ({ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q80
+		  |pickup.sapce4 -> Q125
+		  |putsuccess.sapce6 -> Q126
+		  |pickupsuccess.sapce4 -> Q129
+		  |putsuccess.sapce3 -> Q134
+		  |task.b -> Q136
+		  |{arrive.{sapce2, sapce3}, {pickup, pickupsuccess}.sapce1} -> Q138),
+	Q139	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q82
+		  |putsuccess.sapce3 -> Q111
+		  |task.b -> Q121
+		  |pickupsuccess.sapce1 -> Q126
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6} -> Q139
+		  |pickupsuccess.sapce4 -> Q140),
+	Q140	= ({arrive.{sapce2, sapce3}, ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.b -> Q25
+		  |task.a -> Q83
+		  |putsuccess.sapce3 -> Q112
+		  |pickupsuccess.sapce1 -> Q127
+		  |pickupsuccess.sapce4 -> Q140
+		  |putsuccess.sapce6 -> Q141),
+	Q141	= ({ended, pickup.{sapce1, sapce4}, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q84
+		  |task.b -> Q93
+		  |putsuccess.sapce3 -> Q113
+		  |pickupsuccess.sapce1 -> Q128
+		  |pickupsuccess.sapce4 -> Q140
+		  |{arrive.{sapce2, sapce3}, putsuccess.sapce6} -> Q141),
+	Q142	= ({arrive.{sapce2, sapce3}, ended, putdown.{sapce4, sapce5}} -> ERROR
+		  |reset -> Q0
+		  |task.a -> Q90
+		  |putsuccess.sapce3 -> Q114
+		  |task.b -> Q122
+		  |pickupsuccess.sapce1 -> Q129
+		  |putsuccess.sapce6 -> Q141
+		  |{pickup.sapce1, pickupsuccess.sapce4} -> Q142
+		  |pickup.sapce4 -> Q143),
+	Q143	= ({arrive.{sapce2, sapce3}, ended, pickup.sapce1, putdown.{sapce4, sapce5}, reset} -> ERROR
+		  |task.a -> Q89
+		  |putsuccess.sapce3 -> Q115
+		  |task.b -> Q123
+		  |pickupsuccess.sapce1 -> Q130
+		  |putsuccess.sapce6 -> Q141
+		  |pickupsuccess.sapce4 -> Q142
+		  |pickup.sapce4 -> Q143).

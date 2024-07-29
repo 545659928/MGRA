@@ -1,0 +1,7 @@
+Process:
+	R15_Not_Put_at_SPACE4
+States:
+	1
+Transitions:
+	R15_Not_Put_at_SPACE4 = Q0,
+	Q0	= (putdown.sapce4 -> ERROR).

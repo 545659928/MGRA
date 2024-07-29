@@ -1,0 +1,11 @@
+Process:
+	R11_BakeProduct
+States:
+	2
+Transitions:
+	R11_BakeProduct = Q0,
+	Q0	= (bake -> ERROR
+		  |[0].pickupSuccess.oven -> Q0
+		  |[0].putSuccess.oven -> Q1),
+	Q1	= ([0].pickupSuccess.oven -> Q0
+		  |{[0].putSuccess.oven, bake} -> Q1).
